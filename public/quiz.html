@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CodeQuest Quiz</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    #quizFeedback.correct {
+      color: green;
+      font-weight: bold;
+    }
+    #quizFeedback.wrong {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔒 Login protection -->
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <script src="js/navbar.js" defer></script>
+
+  <div class="container">
+    <div id="quizProgress" style="font-weight: bold; margin-bottom: 10px;"></div>
+    <h2 id="question">Loading quiz...</h2>
+    <form id="quizForm"></form>
+
+    <button id="submitBtn" onclick="submitQuizAnswer()">Submit</button>
+    <p id="quizFeedback"></p>
+  </div>
+
+  <script src="js/quiz.js"></script>
+  <script>
+    // Optional support if not already in quiz.js
+    function updateProgress(current, total) {
+      document.getElementById("quizProgress").innerText = `🧠 Question ${current} of ${total}`;
+    }
+
+    // Enhance feedback display behavior
+    function showFeedback(message, isCorrect) {
+      const feedback = document.getElementById("quizFeedback");
+      feedback.innerText = message;
+      feedback.className = isCorrect ? "correct" : "wrong";
+      feedback.scrollIntoView({ behavior: "smooth" });
+
+      const btn = document.getElementById("submitBtn");
+      if (btn) btn.disabled = true; // Prevent multiple submissions
+    }
+
+    // Call `showFeedback("✅ Correct!", true)` or `showFeedback("❌ Try again!", false)` inside quiz.js
+  </script>
+</body>
+</html>

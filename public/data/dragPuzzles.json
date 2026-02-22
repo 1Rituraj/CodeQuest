@@ -1,0 +1,37 @@
+[
+  {
+    "question": "Print numbers 0 to 4 using a for loop.",
+    "blocks": ["for", "(", "let i = 0;", "i < 5;", "i++", ")", "{", "console.log(i);", "}"],
+    "answer": ["for", "(", "let i = 0;", "i < 5;", "i++", ")", "{", "console.log(i);", "}"],
+    "difficulty": "beginner",
+    "language": "JavaScript"
+  },
+  {
+    "question": "Declare a variable with value 10.",
+    "blocks": ["let", "x", "=", "10", ";"],
+    "answer": ["let", "x", "=", "10", ";"],
+    "difficulty": "beginner",
+    "language": "JavaScript"
+  },
+  {
+    "question": "Return a function.",
+    "blocks": ["function", "sum", "(", "a", ",", "b", ")", "{", "return", "a + b", ";", "}"],
+    "answer": ["function", "sum", "(", "a", ",", "b", ")", "{", "return", "a + b", ";", "}"],
+    "difficulty": "intermediate",
+    "language": "JavaScript"
+  },
+  {
+    "question": "Print numbers 1 to 5 using for loop in C++.",
+    "blocks": ["for", "(", "int i = 1;", "i <= 5;", "i++", ")", "{", "cout << i;", "}"],
+    "answer": ["for", "(", "int i = 1;", "i <= 5;", "i++", ")", "{", "cout << i;", "}"],
+    "difficulty": "beginner",
+    "language": "C++"
+  },
+  {
+    "question": "Declare a class in Java.",
+    "blocks": ["class", "MyClass", "{", "int x;", "}"],
+    "answer": ["class", "MyClass", "{", "int x;", "}"],
+    "difficulty": "beginner",
+    "language": "Java"
+  }
+]

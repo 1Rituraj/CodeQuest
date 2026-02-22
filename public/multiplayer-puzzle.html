@@ -1,0 +1,178 @@
+<!-- ✅ multiplayer-puzzle.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Multiplayer Puzzle - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <script src="js/navbar.js" defer></script>
+
+  <div class="container">
+    <h1>🤝 Multiplayer Puzzle</h1>
+    <p><strong>Room:</strong> <span id="roomCodeText"></span></p>
+    <p><strong>Current Player:</strong> <span id="playerNameText"></span></p>
+
+    <div id="progress"></div>
+    <div id="question"></div>
+
+    <form id="optionsForm"></form>
+
+    <button onclick="submitAnswer()">Submit</button>
+    <button onclick="showHint()">Show Hint</button>
+
+    <p id="hint" style="display: none;"></p>
+    <p id="feedback"></p>
+  </div>
+
+   <!-- i am adding this  -->
+
+  <!-- 🗨️ Chat Container -->
+  <div id="chat-container" style="margin-top: 30px; max-width: 600px;">
+    <h3>💬 Chat</h3>
+    <div id="chat-box" style="height: 200px; overflow-y: auto; border: 1px solid black; padding: 10px; background-color: #650505;"></div>
+    <input type="text" id="chat-input" placeholder="Type a message..." style="width: 80%; padding: 5px;" />
+    <button onclick="sendMessage()" style="width: 18%; padding: 5px;">Send</button>
+  </div>
+
+
+  <script>
+    const socket = io(); // Connect to server
+
+    const roomCode = localStorage.getItem("roomCode");
+    const playerId = localStorage.getItem("playerId");
+    const playerName = localStorage.getItem("playerName");
+    const role = localStorage.getItem("playerRole") || "guest";
+    const difficulty = localStorage.getItem("difficulty") || "beginner";
+    const preferredLanguage = localStorage.getItem("preferredLanguage") || "JavaScript";
+
+    document.getElementById("roomCodeText").innerText = roomCode;
+    document.getElementById("playerNameText").innerText = playerName;
+
+    let puzzles = [];
+    let currentIndex = 0;
+
+    // ✅ Emit joinRoom after socket connection is established
+    socket.on("connect", () => {
+      socket.emit("joinRoom", { roomCode, playerId, playerName, role });
+    });
+
+    // ✅ Host loads puzzles and sends
+    socket.on("loadPuzzles", async () => {
+      if (role === "host") {  // ✅ Only host sends puzzles
+        const res = await fetch("data/puzzles.json");
+        const all = await res.json();
+        puzzles = all.filter(p => p.difficulty === difficulty && p.language === preferredLanguage);
+
+        console.log("📤 Host sending puzzles:", puzzles); // ✅ ADD THIS FOR DEBUG
+
+        socket.emit("sendPuzzles", { roomCode, puzzles });
+        socket.emit("nextPuzzle", { roomCode, currentIndex: 0 });
+      }
+    });
+
+
+    // ✅ Guest receives puzzles
+    socket.on("receivePuzzles", (data) => {
+      console.log("📥 Guest received puzzles:", data.puzzles);
+      puzzles = data.puzzles;
+      if (puzzles.length > 0) showPuzzle();
+      else alert("⚠️ No puzzles found for your selected language/difficulty.");
+    });
+
+    // ✅ Sync current puzzle
+    socket.on("syncPuzzle", (index) => {
+      currentIndex = index;
+      showPuzzle();
+    });
+
+    function showPuzzle() {
+      const puzzle = puzzles[currentIndex];
+      if (!puzzle) {
+        alert("✅ Multiplayer puzzles complete!");
+        return window.location.href = "quiz.html";
+      }
+
+      document.getElementById("hint").style.display = "none";
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("progress").innerText = `Puzzle ${currentIndex + 1} of ${puzzles.length}`;
+      document.getElementById("question").innerText = puzzle.question;
+
+      const form = document.getElementById("optionsForm");
+      form.innerHTML = "";
+      puzzle.options.forEach((option, index) => {
+        const label = document.createElement("label");
+        label.innerHTML = `
+          <input type="radio" name="option" value="${option}" ${index === 0 ? 'checked' : ''}>
+          ${option}
+        `;
+        form.appendChild(label);
+        form.appendChild(document.createElement("br"));
+      });
+    }
+
+    function showHint() {
+      const hint = puzzles[currentIndex].hint;
+      document.getElementById("hint").innerText = "Hint: " + hint;
+      document.getElementById("hint").style.display = "block";
+    }
+
+    function submitAnswer() {
+      const selected = document.querySelector("input[name='option']:checked");
+      const feedback = document.getElementById("feedback");
+
+      if (!selected) {
+        feedback.innerText = "⚠️ Please select an answer.";
+        feedback.style.color = "orange";
+        return;
+      }
+
+      const correct = puzzles[currentIndex].answer;
+
+      if (selected.value === correct) {
+        feedback.innerText = "✅ Correct!";
+        feedback.style.color = "green";
+      } else {
+        feedback.innerText = "❌ Incorrect!";
+        feedback.style.color = "red";
+      }
+
+      setTimeout(() => {
+        currentIndex++;
+        socket.emit("nextPuzzle", { roomCode, currentIndex });
+      }, 1000);
+    }
+  </script>
+
+  <!-- i am adding this  -->
+
+  <script>
+  // 💬 Chat functionality
+  const chatBox = document.getElementById("chat-box");
+  const chatInput = document.getElementById("chat-input");
+
+  function sendMessage() {
+    const message = chatInput.value.trim();
+    if (message !== "") {
+      socket.emit("chatMessage", { roomCode, playerName, message });
+      chatInput.value = "";
+    }
+  }
+
+  socket.on("chatMessage", ({ playerName, message }) => {
+    const msgElement = document.createElement("div");
+    msgElement.innerHTML = `<strong>${playerName}:</strong> ${message}`;
+    chatBox.appendChild(msgElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+</script>
+
+</body>
+</html>

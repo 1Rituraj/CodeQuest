@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CodeQuest - Drag Puzzle</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .drag-container {
+      margin-top: 20px;
+    }
+
+    .block {
+        display: inline-block;
+        background: #e0f7fa; 
+        padding: 12px 20px;
+        margin: 6px;
+        border: 2px solid #00acc1;
+        border-radius: 10px;
+        cursor: grab;
+        font-weight: 600;
+        font-size: 1.1rem;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.1s ease;
+        color: black;
+    }
+
+    .block:hover {
+        transform: scale(1.05);
+        background: #b2ebf2;
+    }
+
+
+
+    .drop-zone {
+      min-height: 60px;
+      border: 2px dashed #aaa;
+      padding: 10px;
+      margin-top: 10px;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔒 Login protection -->
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <script src="js/navbar.js" defer></script>
+  
+  <div class="container">
+    <h2>🧩 Arrange the code blocks correctly</h2>
+
+    <div id="question" style="font-weight: bold;"></div>
+
+    <!-- Draggable blocks -->
+    <div id="blocks" class="drag-container"></div>
+
+    <h3>Drop blocks here:</h3>
+    <div id="dropZone" class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+
+    <button onclick="submitDragAnswer()">✅ Submit</button>
+    <button onclick="resetDropZone()">🔄 Reset</button>
+
+    <p id="dragFeedback"></p>
+  </div>
+
+  <script src="js/drag.js"></script>
+</body>
+</html>

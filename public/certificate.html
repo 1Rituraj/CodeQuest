@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Certificate - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .certificate {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 40px;
+      border: 5px solid #00acc1;
+      border-radius: 20px;
+      background: #f0faff;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      color: black;
+    }
+
+    h1 {
+      color: #006064;
+      margin-bottom: 10px;
+    }
+
+    .details {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    .print-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #00acc1;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .print-btn:hover {
+      background: #00838f;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #00acc1;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media print {
+      .print-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔒 Login protection -->
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <script src="js/navbar.js" defer></script>
+
+  <div class="certificate">
+    <div class="avatar" id="playerAvatar"></div>
+    <h1>🏅 CodeQuest Certificate of Completion</h1>
+
+    <p class="details"><strong>Presented to:</strong> <span id="playerName"></span></p>
+    <p class="details"><strong>Difficulty:</strong> <span id="difficulty"></span></p>
+    <p class="details"><strong>Total Score:</strong> <span id="score"></span></p>
+    <p class="details"><strong>Puzzles Completed:</strong> <span id="puzzlesCompleted"></span></p>
+    <p class="details"><strong>Completion Date:</strong> <span id="completionDate"></span></p>
+
+    <p class="details">👏 Congratulations on completing your coding journey with CodeQuest!</p>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Download</button>
+  </div>
+
+  <script>
+    const name = localStorage.getItem("playerName") || "Anonymous";
+    const difficulty = localStorage.getItem("difficulty") || "N/A";
+    const score = localStorage.getItem("score") || "0";
+    const completed = localStorage.getItem("puzzlesCompleted") || "0";
+    const avatarImg = localStorage.getItem("avatarBase64");
+
+    document.getElementById("playerName").innerText = name;
+    document.getElementById("difficulty").innerText = difficulty;
+    document.getElementById("score").innerText = score;
+    document.getElementById("puzzlesCompleted").innerText = completed;
+
+    const today = new Date();
+    const dateStr = today.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById("completionDate").innerText = dateStr;
+
+    if (avatarImg) {
+      const img = document.createElement("img");
+      img.src = avatarImg;
+      document.getElementById("playerAvatar").appendChild(img);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    setTimeout(() => {
+      confetti({
+        particleCount: 1000,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    }, 300);
+  </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Learn Coding Concepts - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:,">
+  <style>
+    .video-container {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .video-frame {
+      width: 100%;
+      max-width: 640px;
+      height: 360px;
+      margin: 0 auto;
+      border-radius: 12px;
+    }
+
+    .watched {
+      color: limegreen;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* Progress bar */
+    #progressWrapper {
+      width: 100%;
+      max-width: 640px;
+      margin: 20px auto;
+      background: #ccc;
+      border-radius: 10px;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: limegreen;
+      transition: width 0.3s ease-in-out;
+    }
+
+    #progressText {
+      text-align: center;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    /* Modal */
+    #completionModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #completionModalContent {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <script src="js/navbar.js" defer></script>
+
+  <div class="container">
+    <h1>📚 Learn Coding Concepts</h1>
+    <p>Watch these fun videos to master logic, loops, and more!</p>
+
+    <!-- ✅ Progress bar section -->
+    <div id="progressWrapper"><div id="progressBar"></div></div>
+    <div id="progressText"></div>
+
+    <!-- ✅ Video containers -->
+    <div class="video-container" id="logic">
+      <h3>🧠 Logic Building</h3>
+      <div id="player-logic" class="video-frame"></div>
+      <p id="logicStatus"></p>
+    </div>
+    <div class="video-container" id="loops">
+      <h3>🔁 Loops for Repetition</h3>
+      <div id="player-loops" class="video-frame"></div>
+      <p id="loopsStatus"></p>
+    </div>
+    <div class="video-container" id="conditions">
+      <h3>🔎 Conditions and Decisions</h3>
+      <div id="player-conditions" class="video-frame"></div>
+      <p id="conditionsStatus"></p>
+    </div>
+    <div class="video-container" id="variables">
+      <h3>🧪 Understanding Variables</h3>
+      <div id="player-variables" class="video-frame"></div>
+      <p id="variablesStatus"></p>
+    </div>
+    <div class="video-container" id="functions">
+      <h3>🔧 What are Functions?</h3>
+      <div id="player-functions" class="video-frame"></div>
+      <p id="functionsStatus"></p>
+    </div>
+    <div class="video-container" id="debugging">
+      <h3>🐞 Debugging - Fixing Mistakes</h3>
+      <div id="player-debugging" class="video-frame"></div>
+      <p id="debuggingStatus"></p>
+    </div>
+    <div class="video-container" id="sequences">
+      <h3>🔤 Code Runs in Sequence</h3>
+      <div id="player-sequences" class="video-frame"></div>
+      <p id="sequencesStatus"></p>
+    </div>
+  </div>
+
+  <!-- ✅ Modal -->
+  <div id="completionModal">
+    <div id="completionModalContent">
+      <h2>🎉 Congratulations!</h2>
+      <p>You’ve completed all topics in this course!</p>
+      <button onclick="document.getElementById('completionModal').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const playerId = localStorage.getItem("playerId");
+    const watchedKey = `learnWatched_${playerId}`;
+    const watched = JSON.parse(localStorage.getItem(watchedKey) || '{}');
+
+    const topics = {
+      logic: "_j4Lj-BT00g",
+      loops: "r3Ti5Xp9W8A",
+      conditions: "dJYIRcsdHWg",
+      variables: "ghCbURMWBD8",
+      functions: "3JIZ40yuZL0",
+      debugging: "lRYs9s-QK8k",
+      sequences: "v_Pc3UnePZY"
+    };
+
+    function updateStatus() {
+      let completed = 0;
+      const total = Object.keys(topics).length;
+
+      for (const topic in topics) {
+        const status = document.getElementById(topic + "Status");
+        if (watched[topic]) {
+          status.innerText = "✅ Watched";
+          status.className = "watched";
+          completed++;
+        } else {
+          status.innerText = "";
+        }
+      }
+
+      // ✅ Progress bar & text
+      const percent = Math.round((completed / total) * 100);
+      document.getElementById("progressBar").style.width = percent + "%";
+      document.getElementById("progressText").innerText = `${completed} of ${total} topics completed`;
+
+      // ✅ Modal
+      if (completed === total && !localStorage.getItem("courseCompleted")) {
+        document.getElementById("completionModal").style.display = "flex";
+        localStorage.setItem("courseCompleted", "true");
+      }
+    }
+
+    function createYouTubePlayers() {
+      for (const topic in topics) {
+        const videoId = topics[topic];
+        const playerDivId = "player-" + topic;
+
+        let playTime = 0;
+        let intervalId = null;
+
+        new YT.Player(playerDivId, {
+          height: "360",
+          width: "640",
+          videoId: videoId,
+          events: {
+            onReady: () => {
+              console.log(`🎬 Player ready for ${topic}`);
+            },
+            onStateChange: (event) => {
+              if (watched[topic]) return;
+
+              if (event.data === YT.PlayerState.PLAYING) {
+                intervalId = setInterval(() => {
+                  playTime++;
+                  if (playTime >= 5) {
+                    clearInterval(intervalId);
+                    watched[topic] = true;
+                    localStorage.setItem(watchedKey, JSON.stringify(watched));
+
+                    updateStatus();
+                  }
+                }, 1000);
+              }
+
+              if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                clearInterval(intervalId);
+              }
+            }
+          }
+        });
+      }
+    }
+
+    function loadYouTubeAPI(callback) {
+      if (window.YT && window.YT.Player) {
+        callback(); // Already loaded
+      } else {
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+        window.onYouTubeIframeAPIReady = () => callback();
+      }
+    }
+
+    updateStatus();
+    loadYouTubeAPI(createYouTubePlayers);
+  </script>
+</body>
+</html>

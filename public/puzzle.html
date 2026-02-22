@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CodeQuest Puzzle</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #feedback.correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    #feedback.wrong {
+      color: red;
+      font-weight: bold;
+    }
+
+    #timer.warning {
+      color: darkred;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔒 Login protection -->
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script> 
+  <script src="js/navbar.js" defer></script>
+
+  <div class="container">
+
+    <div id="playerStats" style="margin-bottom:10px; font-weight:bold;">
+      🪙 Coins: <span id="coinDisplay">0</span>
+    </div>
+
+    <!-- Progress bar -->
+    <div id="progress" style="margin-bottom: 10px; font-weight: bold;"></div>
+
+    <!-- Timer element -->
+    <p id="timer" style="margin-bottom: 10px; font-weight: bold; color: red;">⏱ Time left: 30s</p>
+
+    <h2 id="question">Loading...</h2>
+    <form id="optionsForm"></form>
+
+    <button onclick="showHint()">💡 Hint</button>
+    <button id="skipBtn" onclick="skipQuestion()">⏭️ Skip (5 coins)</button>
+    <button id="timeBtn" onclick="buyExtraTime()">⏱️ +15s (3 coins)</button>
+    <button onclick="submitAnswer()">✅ Submit</button>
+    <button onclick="nextPuzzle()">➡️ Next Puzzle</button>
+
+    <p id="hint" style="display:none;"></p>
+    <p id="feedback"></p>
+  </div>
+
+  <script src="js/puzzle.js"></script>
+
+
+  <script>
+    // Optional support inside puzzle.js
+    function updateTimer(secondsLeft) {
+      const timerEl = document.getElementById("timer");
+      timerEl.innerText = `⏱ Time left: ${secondsLeft}s`;
+      timerEl.classList.toggle("warning", secondsLeft <= 10);
+    }
+
+    function disableOptions() {
+      document.querySelectorAll("#optionsForm input[type=radio]").forEach(radio => {
+        radio.disabled = true;
+      });
+    }
+
+    function showPuzzleFeedback(message, isCorrect) {
+      const fb = document.getElementById("feedback");
+      fb.innerText = message;
+      fb.className = isCorrect ? "correct" : "wrong";
+      fb.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // In puzzle.js, call these as needed:
+    // updateTimer(10), disableOptions(), showPuzzleFeedback("✅ Correct", true)
+  </script>
+
+  <div id="toastContainer" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  "></div>
+
+</body>
+</html>

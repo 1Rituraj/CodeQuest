@@ -1,0 +1,37 @@
+[
+  {
+    "question": "Which of these is a JavaScript data type?",
+    "options": ["class", "float", "boolean", "loop"],
+    "answer": "boolean",
+    "difficulty": "beginner",
+    "language": "JavaScript"
+  },
+  {
+    "question": "What does `===` mean in JavaScript?",
+    "options": ["Assignment", "Equal value", "Strict equality", "Not equal"],
+    "answer": "Strict equality",
+    "difficulty": "beginner",
+    "language": "JavaScript"
+  },
+  {
+    "question": "Which keyword is used to declare a variable in JS?",
+    "options": ["dim", "var", "define", "v"],
+    "answer": "var",
+    "difficulty": "beginner",
+    "language": "JavaScript"
+  },
+  {
+    "question": "Which of these is a valid data type in C++?",
+    "options": ["string", "num", "char", "decimal"],
+    "answer": "char",
+    "difficulty": "beginner",
+    "language": "C++"
+  },
+  {
+    "question": "How do you define a class in Java?",
+    "options": ["class MyClass {}", "MyClass : class {}", "define class MyClass {}", "new class MyClass {}"],
+    "answer": "class MyClass {}",
+    "difficulty": "beginner",
+    "language": "Java"
+  }
+]

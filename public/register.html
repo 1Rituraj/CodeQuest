@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Register to Play</h1>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Enter your name" required />
+      <input type="number" id="age" placeholder="Enter your age (6–15)" min="6" max="15" required />
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <input type="password" id="password" placeholder="Create a password" required />
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("/api/users/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, age, email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("🎉 Registered successfully!");
+        localStorage.setItem("playerId", data._id);
+        localStorage.setItem("playerName", data.name);
+        localStorage.setItem("playerAge", data.age);
+        localStorage.setItem("playerEmail", data.email);
+        window.location.href = "login.html"; // Redirect to login after registration
+      } else {
+        alert("❌ Registration failed: " + data.message);
+      }
+    });
+  </script>
+</body>
+</html>

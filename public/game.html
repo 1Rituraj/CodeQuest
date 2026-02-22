@@ -1,0 +1,93 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Game Mode - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 🔒 Login protection -->
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <script src="js/navbar.js" defer></script>
+
+  <div class="container">
+    <h1>Select Game Mode</h1>
+
+    <label for="mode">Choose Mode:</label>
+    <select id="mode">
+      <option value="single">Single Player</option>
+      <option value="multi">Multiplayer</option>
+      <option value="drag">DragAndDrop</option>
+    </select>
+
+    <label for="difficulty">Choose Difficulty:</label>
+    <select id="difficulty">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+
+    <!-- ✅ Language selection -->
+    <label for="language">Preferred Language:</label>
+    <select id="language">
+      <option value="C++">C++</option>
+      <option value="Java">Java</option>
+      <option value="JavaScript">JavaScript</option>
+    </select>
+
+    <button onclick="startPuzzle()">Start Puzzle</button>
+  </div>
+
+<script>
+
+  // 🧠 Get recommended difficulty from backend
+  async function applyRecommendedDifficulty() {
+    const userId = localStorage.getItem("playerId");
+    if (!userId) return;
+
+    try {
+      const res = await fetch(`/api/game/recommended-difficulty/${userId}`);
+      const data = await res.json();
+
+      const difficultySelect = document.getElementById("difficulty");
+      difficultySelect.value = data.difficulty;
+
+      // Optional message
+      const msg = document.createElement("p");
+      msg.style.color = "lightgreen";
+      msg.innerText = `⭐ Recommended for you: ${data.difficulty}`;
+      difficultySelect.parentNode.appendChild(msg);
+
+    } catch (err) {
+      console.log("Difficulty recommendation failed");
+    }
+  }
+  applyRecommendedDifficulty();
+
+  function startPuzzle() {
+    const mode = document.getElementById('mode').value;
+    const difficulty = document.getElementById('difficulty').value;
+    const language = document.getElementById('language').value;
+
+    localStorage.setItem('gameMode', mode);
+    localStorage.setItem('difficulty', difficulty);
+    localStorage.setItem('preferredLanguage', language);
+
+    // ✅ Redirect based on selected mode
+    if (mode === "single") {
+      window.location.href = "puzzle.html";
+    } else if(mode === "multi"){
+      window.location.href = "multiplayer.html";
+    }
+    else  {
+      window.location.href = "drag.html";
+    }
+  }
+</script>
+
+</body>
+</html>

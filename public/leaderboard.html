@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Leaderboard - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .toggle-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    select {
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 90%;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔒 Login protection -->
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script> 
+  <script src="js/navbar.js" defer></script>
+  <div class="container">
+    <h1>🏆 CodeQuest Leaderboard</h1>
+
+    <!-- 🔘 Mode filter -->
+    <div class="toggle-container">
+      <label for="modeSelect">Select Mode:</label>
+      <select id="modeSelect" onchange="loadLeaderboard()">
+        <option value="normal">🧩 Normal Mode</option>
+        <option value="drag">🧠 Drag Mode</option>
+      </select>
+    </div>
+
+    <table id="leaderboardTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Difficulty</th>
+          <th>Puzzles Completed</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button onclick="goHome()">🏠 Home</button>
+  </div>
+
+  <script>
+    async function loadLeaderboard() {
+      const res = await fetch("/api/leaderboard");
+      const data = await res.json();
+
+      const mode = document.getElementById("modeSelect").value;
+      const tbody = document.querySelector("#leaderboardTable tbody");
+      tbody.innerHTML = "";
+
+      const filtered = data
+        .filter(p => mode === "drag" ? p.dragMode : !p.dragMode)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5); // top 5 only
+
+      filtered.forEach((player, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${player.name}</td>
+          <td>${player.score}</td>
+          <td>${player.difficulty || "-"}</td>
+          <td>${player.puzzlesCompleted || 0}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    loadLeaderboard();
+  </script>
+</body>
+</html>

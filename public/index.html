@@ -1,0 +1,41 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome to CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>👾 Welcome to CodeQuest</h1>
+    <p>Learn to code through fun, interactive puzzles!</p>
+
+    <button onclick="startNewGame()">🎮 Start New Game</button>
+    <button onclick="continueGame()">⏩ Continue Game</button>
+    <button onclick="viewAchievements()">🏆 View Achievements</button>
+    <button onclick="window.location.href='leaderboard.html'">🏆 View Leaderboard</button>
+
+  </div>
+
+  <script>
+    function startNewGame() {
+      localStorage.clear(); // Reset previous data
+      window.location.href = "register.html";
+    }
+
+    function continueGame() {
+      const playerId = localStorage.getItem("playerId");
+      if (playerId) {
+        window.location.href = "puzzle.html";
+      } else {
+        alert("No previous game found. Please register first.");
+      }
+    }
+
+    function viewAchievements() {
+      window.location.href = "achievements.html";
+    }
+  </script>
+</body>
+</html>

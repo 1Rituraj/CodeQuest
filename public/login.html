@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Login to CodeQuest</h1>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <input type="password" id="password" placeholder="Enter your password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <p id="errorMessage" style="color: red;"></p>
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const errorMessage = document.getElementById("errorMessage");
+
+      const response = await fetch("/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // ✅ Store session in localStorage
+        localStorage.setItem("playerId", data._id);
+        localStorage.setItem("playerName", data.name);
+        localStorage.setItem("playerAge", data.age);
+        localStorage.setItem("playerEmail", data.email);
+        localStorage.setItem("score", data.score || 0);
+        localStorage.setItem("puzzlesCompleted", data.puzzlesCompleted || 0);
+        localStorage.setItem("level", data.level || "Beginner");
+
+        // ✅ Redirect to game
+        window.location.href = "game.html";
+      } else {
+        errorMessage.innerText = data.message || "Login failed. Try again.";
+      }
+    });
+  </script>
+</body>
+</html>

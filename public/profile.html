@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .profile-box {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 15px;
+      background: #f5faff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      color: black;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #b2ebf2;
+      font-size: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .badge {
+      margin: 10px 0;
+      font-weight: bold;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    .bronze { background: #cd7f32; }
+    .silver { background: #aaa; }
+    .gold { background: #ffd700; }
+
+    .info {
+      font-size: 18px;
+      margin: 8px 0;
+    }
+
+    .btn {
+      margin: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #00b4d8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #0077b6;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    #editForm {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔒 Protect the page -->
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+   <script src="js/navbar.js" defer></script>
+  <div class="profile-box">
+    <!-- 🖼️ Avatar -->
+    <div class="avatar" id="avatarDisplay"></div>
+
+    <input type="file" accept="image/*" onchange="handleImageUpload(event)" />
+
+    <h1>👤 Your Profile</h1>
+    <p class="info"><strong>Name:</strong> <span id="name"></span></p>
+    <p class="info"><strong>Age:</strong> <span id="age"></span></p>
+    <p class="info"><strong>Email:</strong> <span id="email"></span></p>
+    <p class="info"><strong>Score:</strong> <span id="score"></span></p>
+    <p class="info"><strong>Level:</strong> <span id="level"></span></p>
+    <p class="info"><strong>Puzzles Completed:</strong> <span id="completed"></span></p>
+     
+    <hr>
+    <h2>📊 Learning Stats</h2>
+
+    <p class="info"><strong>Accuracy:</strong> <span id="accuracy">-</span>%</p>
+    <p class="info"><strong>Strong Topic:</strong> <span id="strongTopic">-</span></p>
+    <p class="info"><strong>Weak Topic:</strong> <span id="weakTopic">-</span></p>
+    <p class="info"><strong>Average Time:</strong> <span id="avgTime">-</span> sec</p>
+    <p class="info"><strong>Total Attempts:</strong> <span id="totalAttempts">-</span></p>
+    <p class="info"><strong>🔥 Current Streak:</strong> <span id="streak">-</span> days</p>
+
+
+
+    <!-- 🏅 Progress Badge -->
+    <p class="badge" id="badgeDisplay">Badge</p>
+
+    <button class="btn" onclick="toggleEditForm()">📝 Edit Profile</button>
+    <button class="btn" onclick="goToGame()">🎮 Resume Game</button>
+    <button class="btn" onclick="logout()">🔓 Logout</button>
+
+    <!-- ✏️ Edit Form -->
+    <form id="editForm" onsubmit="updateProfile(event)">
+      <input type="text" id="editName" placeholder="New name" required />
+      <input type="number" id="editAge" placeholder="New age"  min="6" max="15" required />
+      <button class="btn" type="submit">✅ Save Changes</button>
+    </form>
+  </div>
+
+  <script>
+    // Load user data
+    const name = localStorage.getItem("playerName") || "N/A";
+    const age = localStorage.getItem("playerAge") || "N/A";
+    const email = localStorage.getItem("playerEmail") || "N/A";
+    const score = parseInt(localStorage.getItem("score") || "0");
+    const level = localStorage.getItem("level") || "Beginner";
+    const completed = localStorage.getItem("puzzlesCompleted") || "0";
+    const avatarBase64 = localStorage.getItem("avatarBase64");
+
+    document.getElementById("name").innerText = name;
+    document.getElementById("age").innerText = age;
+    document.getElementById("email").innerText = email;
+    document.getElementById("score").innerText = score;
+    document.getElementById("level").innerText = level;
+    document.getElementById("completed").innerText = completed;
+
+    // 🏅 Badge logic
+    const badge = document.getElementById("badgeDisplay");
+    if (score >= 60) {
+      badge.innerText = "🥇 Gold";
+      badge.classList.add("gold");
+    } else if (score >= 30) {
+      badge.innerText = "🥈 Silver";
+      badge.classList.add("silver");
+    } else {
+      badge.innerText = "🥉 Bronze";
+      badge.classList.add("bronze");
+    }
+
+    // 👤 Avatar logic
+    const avatarDisplay = document.getElementById("avatarDisplay");
+    function updateAvatar() {
+        const avatarBase64 = localStorage.getItem("avatarBase64");
+        avatarDisplay.innerHTML = ""; // clear any previous content
+
+        if (avatarBase64) {
+            const img = document.createElement("img");
+            img.src = avatarBase64;
+            img.alt = "Profile Picture";
+            avatarDisplay.appendChild(img);
+        } else {
+            const letter = (localStorage.getItem("playerName") || "U").charAt(0).toUpperCase();
+            avatarDisplay.textContent = letter;
+        }
+    }
+
+// 👤 Load avatar on page load
+updateAvatar();
+
+
+    // 📤 Upload new avatar
+    function handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          localStorage.setItem("avatarBase64", e.target.result);
+          localStorage.setItem("avatarBase64", e.target.result);
+          updateAvatar();
+
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // 📝 Edit profile toggle
+    function toggleEditForm() {
+      const form = document.getElementById("editForm");
+      form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+
+    // ✅ Save updated name/age
+    function updateProfile(e) {
+      e.preventDefault();
+      const newName = document.getElementById("editName").value;
+      const newAge = document.getElementById("editAge").value;
+
+      localStorage.setItem("playerName", newName);
+      localStorage.setItem("playerAge", newAge);
+
+      document.getElementById("name").innerText = newName;
+      document.getElementById("age").innerText = newAge;
+      avatarDisplay.innerText = newName.charAt(0).toUpperCase();
+
+      toggleEditForm();
+      alert("✅ Profile updated!");
+    }
+
+    // 🎮 Resume game
+    function goToGame() {
+      window.location.href = "game.html";
+    }
+
+    // 🔓 Logout
+    function logout() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+
+    // 📊 Load analytics
+    async function loadAnalytics() {
+      const userId = localStorage.getItem("playerId");
+      if (!userId) return;
+
+      try {
+        const res = await fetch(`/api/analytics/${userId}`);
+        const data = await res.json();
+
+        document.getElementById("accuracy").innerText = data.accuracy;
+        document.getElementById("strongTopic").innerText = data.strongTopic;
+        document.getElementById("weakTopic").innerText = data.weakTopic;
+        document.getElementById("avgTime").innerText = data.avgTime;
+        document.getElementById("totalAttempts").innerText = data.totalAttempts;
+
+      } catch (err) {
+        console.log("Analytics load failed");
+      }
+    }
+
+    loadAnalytics();
+
+    // 🔥 Load streak
+  async function loadStreak() {
+    const userId = localStorage.getItem("playerId");
+    if (!userId) return;
+
+    try {
+      const res = await fetch(`/api/analytics/streak/${userId}`);
+      const data = await res.json();
+
+      document.getElementById("streak").innerText = data.streak;
+
+    } catch (err) {
+      console.log("Streak load failed");
+    }
+  }
+
+  loadStreak();
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Waiting Room - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem("playerId")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <script src="js/navbar.js" defer></script>
+
+  <div class="container">
+    <h1>👥 Waiting Room</h1>
+    <p><strong>Room Code:</strong> <span id="roomCode"></span></p>
+
+    <div>
+      <p>👑 Host: <span id="hostName">Loading...</span></p>
+      <p>👤 Guest: <span id="guestName">Waiting...</span></p>
+    </div>
+
+    <button id="startBtn" style="display: none;" onclick="startGame()">Start Game</button>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    const roomCode = localStorage.getItem("roomCode");
+    const role = localStorage.getItem("playerRole");
+
+    document.getElementById("roomCode").innerText = roomCode;
+
+    async function fetchRoomStatus() {
+        try {
+            const res = await fetch(`/api/room/status/${roomCode}`);
+
+            const data = await res.json();
+
+            console.log("✅ Room status:", data);  // ← DEBUG LOG
+            console.log("Polling:", data);
+
+            if (data.message || !data.host) {
+            document.getElementById("status").innerText = "❌ Room not found or invalid.";
+            return;
+            }
+
+            const hostName = data.host?.name || "❓ Unknown Host";
+            const guestName = data.guest?.name || "🕒 Waiting...";
+
+            document.getElementById("hostName").innerText = hostName;
+            document.getElementById("guestName").innerText = guestName;
+
+            if (role === "host" && data.guest) {
+            document.getElementById("startBtn").style.display = "inline-block";
+            }
+
+            if (data.gameStarted) {
+              console.log("🎮 Game started! Redirecting to multiplayer...");
+              window.location.href = "multiplayer-puzzle.html";
+            }
+        } catch (err) {
+            console.error("Fetch error:", err);
+            document.getElementById("status").innerText = "❌ Failed to fetch room status.";
+        }
+        }
+
+
+            async function startGame() {
+            const res = await fetch(`/api/room/start/${roomCode}`, {
+                method: "POST"
+            });
+            if (res.ok) {
+                window.location.href = "multiplayer-puzzle.html";
+            } else {
+                document.getElementById("status").innerText = "❌ Could not start the game.";
+            }
+    }
+
+    // Refresh room status every 2 seconds
+    fetchRoomStatus(); // initial
+    setInterval(fetchRoomStatus, 2000);
+  </script>
+</body>
+</html>
