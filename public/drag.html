@@ -10,33 +10,78 @@
     }
 
     .block {
-        display: inline-block;
-        background: #e0f7fa; 
-        padding: 12px 20px;
-        margin: 6px;
-        border: 2px solid #00acc1;
-        border-radius: 10px;
-        cursor: grab;
-        font-weight: 600;
-        font-size: 1.1rem;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        transition: transform 0.1s ease;
-        color: black;
+      font-family: "Courier New", monospace;
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 10px 16px;
+      margin: 6px;
+      border-radius: 6px;
+      cursor: grab;
+      border: 1px solid #334155;
+      transition: all 0.2s ease;
     }
 
     .block:hover {
-        transform: scale(1.05);
-        background: #b2ebf2;
+      background: #334155;
+      transform: translateY(-2px);
+    }
+
+    .block:active {
+      cursor: grabbing;
     }
 
 
 
     .drop-zone {
-      min-height: 60px;
-      border: 2px dashed #aaa;
-      padding: 10px;
+      min-height: 100px;
+      border: 2px dashed #2563eb;
+      padding: 15px;
+      margin-top: 15px;
+      background: #0f172a;
+      border-radius: 8px;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .drop-zone:hover {
+      background: #1e293b;
+    }
+
+    .progress-container {
+      width: 100%;
+      background: #e5e7eb;
+      height: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #2563eb, #22c55e);
+      transition: width 0.4s ease;
+    }
+
+    #progressText {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      color: #555;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      background: #2563eb;
+      color: white;
+    }
+    #dragFeedback {
+      font-weight: bold;
+      font-size: 1.1rem;
       margin-top: 10px;
-      background: #fafafa;
+      transition: transform 0.3s ease;
     }
   </style>
 </head>
@@ -50,7 +95,20 @@
   <script src="js/navbar.js" defer></script>
   
   <div class="container">
+
+    <div class="progress-container">
+     <div id="progressBar" class="progress-bar">
+      
+     </div>
+    </div>
+    <p id="progressText"></p>
+
+     <p id="timer" style="font-weight:bold; color:#2563eb;"></p>
     <h2>🧩 Arrange the code blocks correctly</h2>
+
+    
+
+    <p id="difficultyBadge" class="badge"></p>
 
     <div id="question" style="font-weight: bold;"></div>
 
@@ -59,13 +117,19 @@
 
     <h3>Drop blocks here:</h3>
     <div id="dropZone" class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+     
+    <p>🪙 Coins: <span id="coinDisplay">0</span></p>
 
+    <button onclick="skipDrag()">⏭ Skip (5 coins)</button>
+    <button onclick="buyDragTime()">⏱ +15s (3 coins)</button>
     <button onclick="submitDragAnswer()">✅ Submit</button>
     <button onclick="resetDropZone()">🔄 Reset</button>
-
+    <button onclick="showHint()">💡 Hint</button>
+    <p id="hintBox" style="display:none; color:#f59e0b;"></p>
     <p id="dragFeedback"></p>
   </div>
 
   <script src="js/drag.js"></script>
 </body>
+
 </html>

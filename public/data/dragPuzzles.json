@@ -1,37 +1,2274 @@
 [
-  {
-    "question": "Print numbers 0 to 4 using a for loop.",
-    "blocks": ["for", "(", "let i = 0;", "i < 5;", "i++", ")", "{", "console.log(i);", "}"],
-    "answer": ["for", "(", "let i = 0;", "i < 5;", "i++", ")", "{", "console.log(i);", "}"],
-    "difficulty": "beginner",
-    "language": "JavaScript"
-  },
-  {
-    "question": "Declare a variable with value 10.",
-    "blocks": ["let", "x", "=", "10", ";"],
-    "answer": ["let", "x", "=", "10", ";"],
-    "difficulty": "beginner",
-    "language": "JavaScript"
-  },
-  {
-    "question": "Return a function.",
-    "blocks": ["function", "sum", "(", "a", ",", "b", ")", "{", "return", "a + b", ";", "}"],
-    "answer": ["function", "sum", "(", "a", ",", "b", ")", "{", "return", "a + b", ";", "}"],
-    "difficulty": "intermediate",
-    "language": "JavaScript"
-  },
-  {
-    "question": "Print numbers 1 to 5 using for loop in C++.",
-    "blocks": ["for", "(", "int i = 1;", "i <= 5;", "i++", ")", "{", "cout << i;", "}"],
-    "answer": ["for", "(", "int i = 1;", "i <= 5;", "i++", ")", "{", "cout << i;", "}"],
-    "difficulty": "beginner",
-    "language": "C++"
-  },
-  {
-    "question": "Declare a class in Java.",
-    "blocks": ["class", "MyClass", "{", "int x;", "}"],
-    "answer": ["class", "MyClass", "{", "int x;", "}"],
-    "difficulty": "beginner",
-    "language": "Java"
-  }
+{
+  "id": "js_beg_1",
+  "question": "Arrange the code to declare a variable and print it.",
+  "blocks": ["let x = 10;", "console.log(x);"],
+  "answer": ["let x = 10;", "console.log(x);"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Declare first.", "Then print."]
+},
+{
+  "id": "js_beg_2",
+  "question": "Arrange the code to check if a number is positive.",
+  "blocks": ["let num = 5;", "if (num > 0) {", "console.log('Positive');", "}"],
+  "answer": ["let num = 5;", "if (num > 0) {", "console.log('Positive');", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Condition inside if.", "Block inside braces."]
+},
+{
+  "id": "js_beg_3",
+  "question": "Arrange the code to print numbers 1 to 3.",
+  "blocks": ["for (let i = 1;", "i <= 3;", "i++) {", "console.log(i);", "}"],
+  "answer": ["for (let i = 1;", "i <= 3;", "i++) {", "console.log(i);", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Initialization first.", "Condition next."]
+},
+{
+  "id": "js_beg_4",
+  "question": "Arrange the code to define a function.",
+  "blocks": ["function greet() {", "console.log('Hello');", "}"],
+  "answer": ["function greet() {", "console.log('Hello');", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Function starts with keyword.", "Close brace required."]
+},
+{
+  "id": "js_beg_5",
+  "question": "Arrange the code to create an array and print it.",
+  "blocks": ["let arr = [1,2,3];", "console.log(arr);"],
+  "answer": ["let arr = [1,2,3];", "console.log(arr);"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Declare array first.", "Then log."]
+},
+{
+  "id": "js_beg_6",
+  "question": "Arrange the code to use else statement.",
+  "blocks": ["if (x > 0) {", "console.log('Positive');", "} else {", "console.log('Negative');", "}"],
+  "answer": ["if (x > 0) {", "console.log('Positive');", "} else {", "console.log('Negative');", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["If block first.", "Else after closing brace."]
+},
+{
+  "id": "js_beg_7",
+  "question": "Arrange the code to declare a constant.",
+  "blocks": ["const PI = 3.14;", "console.log(PI);"],
+  "answer": ["const PI = 3.14;", "console.log(PI);"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Use const keyword.", "Then print."]
+},
+{
+  "id": "js_beg_8",
+  "question": "Arrange the code to use while loop.",
+  "blocks": ["let i = 0;", "while (i < 3) {", "console.log(i);", "i++;", "}"],
+  "answer": ["let i = 0;", "while (i < 3) {", "console.log(i);", "i++;", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Initialize first.", "Increment inside loop."]
+},
+{
+  "id": "js_beg_9",
+  "question": "Arrange the code to define an arrow function.",
+  "blocks": ["const greet = () => {", "console.log('Hi');", "};"],
+  "answer": ["const greet = () => {", "console.log('Hi');", "};"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Arrow uses =>.", "End with semicolon."]
+},
+{
+  "id": "js_beg_10",
+  "question": "Arrange the code to push an element into array.",
+  "blocks": ["let arr = [];", "arr.push(5);", "console.log(arr);"],
+  "answer": ["let arr = [];", "arr.push(5);", "console.log(arr);"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Initialize array.", "Use push method."]
+},
+{
+  "id": "js_beg_11",
+  "question": "Arrange the code to use switch statement.",
+  "blocks": ["switch(day) {", "case 1:", "console.log('Monday');", "break;", "}"],
+  "answer": ["switch(day) {", "case 1:", "console.log('Monday');", "break;", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Switch first.", "Case inside."]
+},
+{
+  "id": "js_beg_12",
+  "question": "Arrange the code to declare an object.",
+  "blocks": ["let person = {", "name: 'John'", "};", "console.log(person.name);"],
+  "answer": ["let person = {", "name: 'John'", "};", "console.log(person.name);"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Object uses {}.", "Access using dot."]
+},
+{
+  "id": "js_beg_13",
+  "question": "Arrange the code to add two numbers inside function.",
+  "blocks": ["function add(a,b) {", "return a + b;", "}"],
+  "answer": ["function add(a,b) {", "return a + b;", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Return inside function."]
+},
+{
+  "id": "js_beg_14",
+  "question": "Arrange the code to use ternary operator.",
+  "blocks": ["let result =", "x > 0 ?", "'Positive';", "'Negative';"],
+  "answer": ["let result =", "x > 0 ?", "'Positive';", "'Negative';"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Condition first.", "Two outputs."]
+},
+{
+  "id": "js_beg_15",
+  "question": "Arrange the code to log array length.",
+  "blocks": ["let arr = [1,2,3];", "console.log(arr.length);"],
+  "answer": ["let arr = [1,2,3];", "console.log(arr.length);"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Use length property."]
+},
+{
+  "id": "js_beg_16",
+  "question": "Arrange the code to use forEach.",
+  "blocks": ["let arr = [1,2,3];", "arr.forEach(num => {", "console.log(num);", "});"],
+  "answer": ["let arr = [1,2,3];", "arr.forEach(num => {", "console.log(num);", "});"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["forEach on array.", "Arrow inside."]
+},
+{
+  "id": "js_beg_17",
+  "question": "Arrange the code to parse string to number.",
+  "blocks": ["let num = parseInt('10');", "console.log(num);"],
+  "answer": ["let num = parseInt('10');", "console.log(num);"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Use parseInt."]
+},
+{
+  "id": "js_beg_18",
+  "question": "Arrange the code to check array includes value.",
+  "blocks": ["let arr = [1,2,3];", "console.log(arr.includes(2));"],
+  "answer": ["let arr = [1,2,3];", "console.log(arr.includes(2));"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Use includes method."]
+},
+{
+  "id": "js_beg_19",
+  "question": "Arrange the code to define a class.",
+  "blocks": ["class Person {", "constructor(name) {", "this.name = name;", "}", "}"],
+  "answer": ["class Person {", "constructor(name) {", "this.name = name;", "}", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Class keyword first.", "Constructor inside."]
+},
+{
+  "id": "js_beg_20",
+  "question": "Arrange the code to use try-catch.",
+  "blocks": ["try {", "console.log(x);", "} catch(error) {", "console.log('Error');", "}"],
+  "answer": ["try {", "console.log(x);", "} catch(error) {", "console.log('Error');", "}"],
+  "difficulty": "beginner",
+  "language": "JavaScript",
+  "hints": ["Try block first.", "Catch handles error."]
+},
+{
+  "id": "js_int_1",
+  "question": "Arrange the code to filter even numbers from array.",
+  "blocks": ["let arr = [1,2,3,4];", "let result = arr.filter(num => num % 2 === 0);", "console.log(result);"],
+  "answer": ["let arr = [1,2,3,4];", "let result = arr.filter(num => num % 2 === 0);", "console.log(result);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use filter method.", "Condition inside arrow."]
+},
+{
+  "id": "js_int_2",
+  "question": "Arrange the code to map array values.",
+  "blocks": ["let arr = [1,2,3];", "let doubled = arr.map(num => num * 2);", "console.log(doubled);"],
+  "answer": ["let arr = [1,2,3];", "let doubled = arr.map(num => num * 2);", "console.log(doubled);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use map.", "Return transformed value."]
+},
+{
+  "id": "js_int_3",
+  "question": "Arrange the code to use reduce method.",
+  "blocks": ["let arr = [1,2,3];", "let sum = arr.reduce((acc, curr) => acc + curr, 0);", "console.log(sum);"],
+  "answer": ["let arr = [1,2,3];", "let sum = arr.reduce((acc, curr) => acc + curr, 0);", "console.log(sum);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Accumulator pattern.", "Initial value is 0."]
+},
+{
+  "id": "js_int_4",
+  "question": "Arrange async function with await.",
+  "blocks": ["async function fetchData() {", "let res = await fetch(url);", "console.log(res);", "}"],
+  "answer": ["async function fetchData() {", "let res = await fetch(url);", "console.log(res);", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["async keyword first.", "await inside function."]
+},
+{
+  "id": "js_int_5",
+  "question": "Arrange code to destructure object.",
+  "blocks": ["let person = {name:'John', age:25};", "let {name, age} = person;", "console.log(name);"],
+  "answer": ["let person = {name:'John', age:25};", "let {name, age} = person;", "console.log(name);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Curly braces for destructuring."]
+},
+{
+  "id": "js_int_6",
+  "question": "Arrange the code to use spread operator.",
+  "blocks": ["let arr1 = [1,2];", "let arr2 = [...arr1, 3];", "console.log(arr2);"],
+  "answer": ["let arr1 = [1,2];", "let arr2 = [...arr1, 3];", "console.log(arr2);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Three dots operator."]
+},
+{
+  "id": "js_int_7",
+  "question": "Arrange code to use setTimeout.",
+  "blocks": ["setTimeout(() => {", "console.log('Hello');", "}, 1000);"],
+  "answer": ["setTimeout(() => {", "console.log('Hello');", "}, 1000);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Callback inside arrow.", "Second argument is time."]
+},
+{
+  "id": "js_int_8",
+  "question": "Arrange code to create a Promise.",
+  "blocks": ["let p = new Promise((resolve, reject) => {", "resolve('Done');", "});"],
+  "answer": ["let p = new Promise((resolve, reject) => {", "resolve('Done');", "});"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Promise constructor.", "resolve inside."]
+},
+{
+  "id": "js_int_9",
+  "question": "Arrange code to use class method.",
+  "blocks": ["class Car {", "start() {", "console.log('Started');", "}", "}"],
+  "answer": ["class Car {", "start() {", "console.log('Started');", "}", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Method inside class."]
+},
+{
+  "id": "js_int_10",
+  "question": "Arrange code to check type safely.",
+  "blocks": ["if (typeof x === 'number') {", "console.log('Number');", "}"],
+  "answer": ["if (typeof x === 'number') {", "console.log('Number');", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use typeof.", "Strict comparison."]
+},
+
+{
+  "id": "js_int_11",
+  "question": "Arrange code to clone object using spread.",
+  "blocks": ["let obj1 = {a:1};", "let obj2 = {...obj1};", "console.log(obj2);"],
+  "answer": ["let obj1 = {a:1};", "let obj2 = {...obj1};", "console.log(obj2);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Spread inside {}."]
+},
+{
+  "id": "js_int_12",
+  "question": "Arrange code to use optional chaining.",
+  "blocks": ["let user = {profile:{name:'Sam'}};", "console.log(user.profile?.name);"],
+  "answer": ["let user = {profile:{name:'Sam'}};", "console.log(user.profile?.name);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use ?. operator."]
+},
+{
+  "id": "js_int_13",
+  "question": "Arrange code to use Array.from.",
+  "blocks": ["let str = 'abc';", "let arr = Array.from(str);", "console.log(arr);"],
+  "answer": ["let str = 'abc';", "let arr = Array.from(str);", "console.log(arr);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Converts iterable."]
+},
+{
+  "id": "js_int_14",
+  "question": "Arrange code to handle error in Promise.",
+  "blocks": ["p.then(result => console.log(result))", ".catch(err => console.log(err));"],
+  "answer": ["p.then(result => console.log(result))", ".catch(err => console.log(err));"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["catch handles error."]
+},
+{
+  "id": "js_int_15",
+  "question": "Arrange code to use for...of loop.",
+  "blocks": ["for (let value of arr) {", "console.log(value);", "}"],
+  "answer": ["for (let value of arr) {", "console.log(value);", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Iterates values."]
+},
+
+{
+  "id": "js_int_16",
+  "question": "Arrange code to use for...in loop.",
+  "blocks": ["for (let key in obj) {", "console.log(key);", "}"],
+  "answer": ["for (let key in obj) {", "console.log(key);", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Iterates keys."]
+},
+{
+  "id": "js_int_17",
+  "question": "Arrange code to use JSON stringify.",
+  "blocks": ["let obj = {a:1};", "let str = JSON.stringify(obj);", "console.log(str);"],
+  "answer": ["let obj = {a:1};", "let str = JSON.stringify(obj);", "console.log(str);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Convert object to string."]
+},
+{
+  "id": "js_int_18",
+  "question": "Arrange code to use JSON parse.",
+  "blocks": ["let str = '{\"a\":1}';", "let obj = JSON.parse(str);", "console.log(obj.a);"],
+  "answer": ["let str = '{\"a\":1}';", "let obj = JSON.parse(str);", "console.log(obj.a);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Convert string to object."]
+},
+{
+  "id": "js_int_19",
+  "question": "Arrange code to freeze object.",
+  "blocks": ["let obj = {a:1};", "Object.freeze(obj);", "console.log(obj);"],
+  "answer": ["let obj = {a:1};", "Object.freeze(obj);", "console.log(obj);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Prevents modification."]
+},
+{
+  "id": "js_int_20",
+  "question": "Arrange code to use default parameters.",
+  "blocks": ["function greet(name='Guest') {", "console.log(name);", "}"],
+  "answer": ["function greet(name='Guest') {", "console.log(name);", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Default value in parameter."]
+},
+
+{
+  "id": "js_int_21",
+  "question": "Arrange code to use rest parameter.",
+  "blocks": ["function sum(...nums) {", "console.log(nums);", "}"],
+  "answer": ["function sum(...nums) {", "console.log(nums);", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["... inside parameter."]
+},
+{
+  "id": "js_int_22",
+  "question": "Arrange code to check array length.",
+  "blocks": ["if (arr.length > 0) {", "console.log('Not empty');", "}"],
+  "answer": ["if (arr.length > 0) {", "console.log('Not empty');", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use length property."]
+},
+{
+  "id": "js_int_23",
+  "question": "Arrange code to reverse array.",
+  "blocks": ["let arr = [1,2,3];", "arr.reverse();", "console.log(arr);"],
+  "answer": ["let arr = [1,2,3];", "arr.reverse();", "console.log(arr);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use reverse method."]
+},
+{
+  "id": "js_int_24",
+  "question": "Arrange code to join array.",
+  "blocks": ["let arr = ['a','b'];", "let str = arr.join('-');", "console.log(str);"],
+  "answer": ["let arr = ['a','b'];", "let str = arr.join('-');", "console.log(str);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Join converts to string."]
+},
+{
+  "id": "js_int_25",
+  "question": "Arrange code to use Math.random.",
+  "blocks": ["let num = Math.random();", "console.log(num);"],
+  "answer": ["let num = Math.random();", "console.log(num);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Generates random number."]
+},
+{
+  "id": "js_int_26",
+  "question": "Arrange code to check equality strictly.",
+  "blocks": ["if (x === y) {", "console.log('Equal');", "}"],
+  "answer": ["if (x === y) {", "console.log('Equal');", "}"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Triple equals."]
+},
+{
+  "id": "js_int_27",
+  "question": "Arrange code to create Date object.",
+  "blocks": ["let today = new Date();", "console.log(today);"],
+  "answer": ["let today = new Date();", "console.log(today);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use new Date."]
+},
+{
+  "id": "js_int_28",
+  "question": "Arrange code to trim string.",
+  "blocks": ["let str = '  hi  ';", "console.log(str.trim());"],
+  "answer": ["let str = '  hi  ';", "console.log(str.trim());"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Removes whitespace."]
+},
+{
+  "id": "js_int_29",
+  "question": "Arrange code to convert string to uppercase.",
+  "blocks": ["let str = 'hello';", "console.log(str.toUpperCase());"],
+  "answer": ["let str = 'hello';", "console.log(str.toUpperCase());"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use toUpperCase."]
+},
+{
+  "id": "js_int_30",
+  "question": "Arrange code to check if value exists in object.",
+  "blocks": ["let obj = {a:1};", "console.log('a' in obj);"],
+  "answer": ["let obj = {a:1};", "console.log('a' in obj);"],
+  "difficulty": "intermediate",
+  "language": "JavaScript",
+  "hints": ["Use in operator."]
+},
+{
+  "id": "js_adv_1",
+  "question": "Arrange the code for factorial using recursion.",
+  "blocks": ["function fact(n) {", "if (n === 0) return 1;", "return n * fact(n - 1);", "}"],
+  "answer": ["function fact(n) {", "if (n === 0) return 1;", "return n * fact(n - 1);", "}"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Base case first.", "Recursive call multiplies n."]
+},
+{
+  "id": "js_adv_2",
+  "question": "Arrange nested loop to print 1-3 multiplication.",
+  "blocks": ["for (let i = 1; i <= 3; i++) {", "for (let j = 1; j <= 3; j++) {", "console.log(i * j);", "}", "}"],
+  "answer": ["for (let i = 1; i <= 3; i++) {", "for (let j = 1; j <= 3; j++) {", "console.log(i * j);", "}", "}"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Outer loop first.", "Inner loop inside."]
+},
+{
+  "id": "js_adv_3",
+  "question": "Arrange closure example.",
+  "blocks": ["function outer() {", "let count = 0;", "return function() {", "count++;", "console.log(count);", "};", "}"],
+  "answer": ["function outer() {", "let count = 0;", "return function() {", "count++;", "console.log(count);", "};", "}"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Inner function returns.", "Access outer variable."]
+},
+{
+  "id": "js_adv_4",
+  "question": "Arrange class with method.",
+  "blocks": ["class Student {", "constructor(name) {", "this.name = name;", "}", "greet() {", "console.log(this.name);", "}", "}"],
+  "answer": ["class Student {", "constructor(name) {", "this.name = name;", "}", "greet() {", "console.log(this.name);", "}", "}"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Constructor inside class.", "Method below constructor."]
+},
+{
+  "id": "js_adv_5",
+  "question": "Arrange async try-catch example.",
+  "blocks": ["async function load() {", "try {", "let res = await fetch(url);", "console.log(res);", "} catch(err) {", "console.log(err);", "}", "}"],
+  "answer": ["async function load() {", "try {", "let res = await fetch(url);", "console.log(res);", "} catch(err) {", "console.log(err);", "}", "}"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Try block first.", "Catch handles error."]
+},
+{
+  "id": "js_adv_6",
+  "question": "Arrange code to reverse a string.",
+  "blocks": ["let str = 'hello';", "let reversed = str.split('').reverse().join('');", "console.log(reversed);"],
+  "answer": ["let str = 'hello';", "let reversed = str.split('').reverse().join('');", "console.log(reversed);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Split first.", "Reverse then join."]
+},
+{
+  "id": "js_adv_7",
+  "question": "Arrange code to check palindrome.",
+  "blocks": ["let str = 'madam';", "let rev = str.split('').reverse().join('');", "console.log(str === rev);"],
+  "answer": ["let str = 'madam';", "let rev = str.split('').reverse().join('');", "console.log(str === rev);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Reverse string.", "Compare equality."]
+},
+{
+  "id": "js_adv_8",
+  "question": "Arrange code to find max number in array.",
+  "blocks": ["let arr = [1,5,3];", "let max = Math.max(...arr);", "console.log(max);"],
+  "answer": ["let arr = [1,5,3];", "let max = Math.max(...arr);", "console.log(max);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Use spread operator.", "Math.max."]
+},
+{
+  "id": "js_adv_9",
+  "question": "Arrange code to sort numbers ascending.",
+  "blocks": ["let arr = [3,1,2];", "arr.sort((a,b) => a - b);", "console.log(arr);"],
+  "answer": ["let arr = [3,1,2];", "arr.sort((a,b) => a - b);", "console.log(arr);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Custom comparator."]
+},
+{
+  "id": "js_adv_10",
+  "question": "Arrange code to remove duplicates.",
+  "blocks": ["let arr = [1,2,2,3];", "let unique = [...new Set(arr)];", "console.log(unique);"],
+  "answer": ["let arr = [1,2,2,3];", "let unique = [...new Set(arr)];", "console.log(unique);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Use Set."]
+},
+{
+  "id": "js_adv_11",
+  "question": "Arrange code to count array elements.",
+  "blocks": ["let arr = [1,2,3];", "let count = arr.length;", "console.log(count);"],
+  "answer": ["let arr = [1,2,3];", "let count = arr.length;", "console.log(count);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Length property."]
+},
+{
+  "id": "js_adv_12",
+  "question": "Arrange code to flatten nested array.",
+  "blocks": ["let arr = [1,[2,3]];", "let flat = arr.flat();", "console.log(flat);"],
+  "answer": ["let arr = [1,[2,3]];", "let flat = arr.flat();", "console.log(flat);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Use flat method."]
+},
+{
+  "id": "js_adv_13",
+  "question": "Arrange code to find index of element.",
+  "blocks": ["let arr = [1,2,3];", "let index = arr.indexOf(2);", "console.log(index);"],
+  "answer": ["let arr = [1,2,3];", "let index = arr.indexOf(2);", "console.log(index);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["indexOf method."]
+},
+{
+  "id": "js_adv_14",
+  "question": "Arrange code to check if string contains substring.",
+  "blocks": ["let str = 'hello world';", "console.log(str.includes('world'));"],
+  "answer": ["let str = 'hello world';", "console.log(str.includes('world'));"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Use includes."]
+},
+{
+  "id": "js_adv_15",
+  "question": "Arrange code to convert string to array.",
+  "blocks": ["let str = 'abc';", "let arr = str.split('');", "console.log(arr);"],
+  "answer": ["let str = 'abc';", "let arr = str.split('');", "console.log(arr);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Split string."]
+},
+{
+  "id": "js_adv_16",
+  "question": "Arrange code to merge objects.",
+  "blocks": ["let obj1 = {a:1};", "let obj2 = {b:2};", "let merged = {...obj1, ...obj2};", "console.log(merged);"],
+  "answer": ["let obj1 = {a:1};", "let obj2 = {b:2};", "let merged = {...obj1, ...obj2};", "console.log(merged);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Spread inside object."]
+},
+{
+  "id": "js_adv_17",
+  "question": "Arrange code to iterate object values.",
+  "blocks": ["let obj = {a:1,b:2};", "for (let key in obj) {", "console.log(obj[key]);", "}"],
+  "answer": ["let obj = {a:1,b:2};", "for (let key in obj) {", "console.log(obj[key]);", "}"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Use for...in."]
+},
+{
+  "id": "js_adv_18",
+  "question": "Arrange code to create IIFE.",
+  "blocks": ["(function() {", "console.log('Hello');", "})();"],
+  "answer": ["(function() {", "console.log('Hello');", "})();"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Immediately invoked."]
+},
+{
+  "id": "js_adv_19",
+  "question": "Arrange code to check even number.",
+  "blocks": ["function isEven(n) {", "return n % 2 === 0;", "}"],
+  "answer": ["function isEven(n) {", "return n % 2 === 0;", "}"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Modulo operator."]
+},
+{
+  "id": "js_adv_20",
+  "question": "Arrange code to sum array with loop.",
+  "blocks": ["let arr = [1,2,3];", "let sum = 0;", "for (let num of arr) {", "sum += num;", "}", "console.log(sum);"],
+  "answer": ["let arr = [1,2,3];", "let sum = 0;", "for (let num of arr) {", "sum += num;", "}", "console.log(sum);"],
+  "difficulty": "advanced",
+  "language": "JavaScript",
+  "hints": ["Initialize sum.", "Loop through array."]
+},
+{
+  "id": "cpp_beg_1",
+  "question": "Arrange the code to print Hello World.",
+  "blocks": ["#include <iostream>", "using namespace std;", "int main() {", "cout << \"Hello World\";", "return 0;", "}"],
+  "answer": ["#include <iostream>", "using namespace std;", "int main() {", "cout << \"Hello World\";", "return 0;", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Include header first.", "main function required."]
+},
+{
+  "id": "cpp_beg_2",
+  "question": "Arrange the code to declare and print integer.",
+  "blocks": ["int x = 10;", "cout << x;"],
+  "answer": ["int x = 10;", "cout << x;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Declare variable first."]
+},
+{
+  "id": "cpp_beg_3",
+  "question": "Arrange the code to use if statement.",
+  "blocks": ["int x = 5;", "if (x > 0) {", "cout << \"Positive\";", "}"],
+  "answer": ["int x = 5;", "if (x > 0) {", "cout << \"Positive\";", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Condition inside if."]
+},
+{
+  "id": "cpp_beg_4",
+  "question": "Arrange the code to print 1 to 3 using for loop.",
+  "blocks": ["for (int i = 1; i <= 3; i++) {", "cout << i;", "}"],
+  "answer": ["for (int i = 1; i <= 3; i++) {", "cout << i;", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Initialization first."]
+},
+{
+  "id": "cpp_beg_5",
+  "question": "Arrange the code to use while loop.",
+  "blocks": ["int i = 0;", "while (i < 3) {", "cout << i;", "i++;", "}"],
+  "answer": ["int i = 0;", "while (i < 3) {", "cout << i;", "i++;", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Increment inside loop."]
+},
+{
+  "id": "cpp_beg_6",
+  "question": "Arrange the code to declare a function.",
+  "blocks": ["int add(int a, int b) {", "return a + b;", "}"],
+  "answer": ["int add(int a, int b) {", "return a + b;", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Return inside function."]
+},
+{
+  "id": "cpp_beg_7",
+  "question": "Arrange the code to use else statement.",
+  "blocks": ["if (x > 0) {", "cout << \"Positive\";", "} else {", "cout << \"Negative\";", "}"],
+  "answer": ["if (x > 0) {", "cout << \"Positive\";", "} else {", "cout << \"Negative\";", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Else after if block."]
+},
+{
+  "id": "cpp_beg_8",
+  "question": "Arrange the code to declare constant.",
+  "blocks": ["const int MAX = 100;", "cout << MAX;"],
+  "answer": ["const int MAX = 100;", "cout << MAX;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Use const keyword."]
+},
+{
+  "id": "cpp_beg_9",
+  "question": "Arrange the code to take input.",
+  "blocks": ["int x;", "cin >> x;", "cout << x;"],
+  "answer": ["int x;", "cin >> x;", "cout << x;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Use cin for input."]
+},
+{
+  "id": "cpp_beg_10",
+  "question": "Arrange the code to use switch.",
+  "blocks": ["switch(day) {", "case 1:", "cout << \"Monday\";", "break;", "}"],
+  "answer": ["switch(day) {", "case 1:", "cout << \"Monday\";", "break;", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Case inside switch."]
+},
+{
+  "id": "cpp_beg_11",
+  "question": "Arrange the code to declare array.",
+  "blocks": ["int arr[3] = {1,2,3};", "cout << arr[0];"],
+  "answer": ["int arr[3] = {1,2,3};", "cout << arr[0];"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Access with index."]
+},
+{
+  "id": "cpp_beg_12",
+  "question": "Arrange the code to sum two numbers.",
+  "blocks": ["int a = 5;", "int b = 3;", "cout << a + b;"],
+  "answer": ["int a = 5;", "int b = 3;", "cout << a + b;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Addition operator."]
+},
+{
+  "id": "cpp_beg_13",
+  "question": "Arrange the code to use do-while.",
+  "blocks": ["int i = 0;", "do {", "cout << i;", "i++;", "} while (i < 3);"],
+  "answer": ["int i = 0;", "do {", "cout << i;", "i++;", "} while (i < 3);"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Condition after loop."]
+},
+{
+  "id": "cpp_beg_14",
+  "question": "Arrange the code to declare double.",
+  "blocks": ["double price = 10.5;", "cout << price;"],
+  "answer": ["double price = 10.5;", "cout << price;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Use double type."]
+},
+{
+  "id": "cpp_beg_15",
+  "question": "Arrange the code to compare two numbers.",
+  "blocks": ["if (a == b) {", "cout << \"Equal\";", "}"],
+  "answer": ["if (a == b) {", "cout << \"Equal\";", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Use == operator."]
+},
+{
+  "id": "cpp_beg_16",
+  "question": "Arrange the code to print newline.",
+  "blocks": ["cout << \"Hello\";", "cout << endl;"],
+  "answer": ["cout << \"Hello\";", "cout << endl;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["endl prints new line."]
+},
+{
+  "id": "cpp_beg_17",
+  "question": "Arrange the code to declare char.",
+  "blocks": ["char grade = 'A';", "cout << grade;"],
+  "answer": ["char grade = 'A';", "cout << grade;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Use single quotes."]
+},
+{
+  "id": "cpp_beg_18",
+  "question": "Arrange the code to check even number.",
+  "blocks": ["if (x % 2 == 0) {", "cout << \"Even\";", "}"],
+  "answer": ["if (x % 2 == 0) {", "cout << \"Even\";", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Use modulo operator."]
+},
+{
+  "id": "cpp_beg_19",
+  "question": "Arrange the code to define main function.",
+  "blocks": ["int main() {", "return 0;", "}"],
+  "answer": ["int main() {", "return 0;", "}"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Entry point."]
+},
+{
+  "id": "cpp_beg_20",
+  "question": "Arrange the code to increment variable.",
+  "blocks": ["int x = 1;", "x++;", "cout << x;"],
+  "answer": ["int x = 1;", "x++;", "cout << x;"],
+  "difficulty": "beginner",
+  "language": "C++",
+  "hints": ["Use ++ operator."]
+},
+{
+  "id": "cpp_int_1",
+  "question": "Arrange the code to use vector.",
+  "blocks": ["#include <vector>", "vector<int> v = {1,2,3};", "cout << v[0];"],
+  "answer": ["#include <vector>", "vector<int> v = {1,2,3};", "cout << v[0];"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Include vector header.", "Access using index."]
+},
+{
+  "id": "cpp_int_2",
+  "question": "Arrange the code to pass parameter by reference.",
+  "blocks": ["void update(int &x) {", "x = 10;", "}"],
+  "answer": ["void update(int &x) {", "x = 10;", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use & for reference."]
+},
+{
+  "id": "cpp_int_3",
+  "question": "Arrange the code to use pointer.",
+  "blocks": ["int x = 5;", "int *ptr = &x;", "cout << *ptr;"],
+  "answer": ["int x = 5;", "int *ptr = &x;", "cout << *ptr;"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["& gets address.", "* dereferences."]
+},
+{
+  "id": "cpp_int_4",
+  "question": "Arrange the code to dynamically allocate memory.",
+  "blocks": ["int *ptr = new int;", "*ptr = 10;", "delete ptr;"],
+  "answer": ["int *ptr = new int;", "*ptr = 10;", "delete ptr;"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use new.", "Delete after use."]
+},
+{
+  "id": "cpp_int_5",
+  "question": "Arrange the code to sort array.",
+  "blocks": ["#include <algorithm>", "int arr[3] = {3,1,2};", "sort(arr, arr+3);"],
+  "answer": ["#include <algorithm>", "int arr[3] = {3,1,2};", "sort(arr, arr+3);"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use sort from algorithm."]
+},
+{
+  "id": "cpp_int_6",
+  "question": "Arrange the code to find max element.",
+  "blocks": ["#include <algorithm>", "int arr[3] = {1,5,3};", "cout << *max_element(arr, arr+3);"],
+  "answer": ["#include <algorithm>", "int arr[3] = {1,5,3};", "cout << *max_element(arr, arr+3);"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use max_element."]
+},
+{
+  "id": "cpp_int_7",
+  "question": "Arrange the code to define class.",
+  "blocks": ["class Person {", "public:", "string name;", "};"],
+  "answer": ["class Person {", "public:", "string name;", "};"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use public access specifier."]
+},
+{
+  "id": "cpp_int_8",
+  "question": "Arrange the code to create object.",
+  "blocks": ["Person p;", "p.name = \"John\";", "cout << p.name;"],
+  "answer": ["Person p;", "p.name = \"John\";", "cout << p.name;"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Object using class."]
+},
+{
+  "id": "cpp_int_9",
+  "question": "Arrange the code to use constructor.",
+  "blocks": ["class A {", "public:", "A() { cout << \"Created\"; }", "};"],
+  "answer": ["class A {", "public:", "A() { cout << \"Created\"; }", "};"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Constructor name same as class."]
+},
+{
+  "id": "cpp_int_10",
+  "question": "Arrange the code to use string.",
+  "blocks": ["#include <string>", "string s = \"Hello\";", "cout << s;"],
+  "answer": ["#include <string>", "string s = \"Hello\";", "cout << s;"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Include string header."]
+},
+
+{
+  "id": "cpp_int_11",
+  "question": "Arrange the code to reverse string.",
+  "blocks": ["#include <algorithm>", "string s = \"abc\";", "reverse(s.begin(), s.end());"],
+  "answer": ["#include <algorithm>", "string s = \"abc\";", "reverse(s.begin(), s.end());"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use reverse function."]
+},
+{
+  "id": "cpp_int_12",
+  "question": "Arrange the code to count vector size.",
+  "blocks": ["vector<int> v = {1,2,3};", "cout << v.size();"],
+  "answer": ["vector<int> v = {1,2,3};", "cout << v.size();"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use size()."]
+},
+{
+  "id": "cpp_int_13",
+  "question": "Arrange the code to iterate vector.",
+  "blocks": ["for (int num : v) {", "cout << num;", "}"],
+  "answer": ["for (int num : v) {", "cout << num;", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Range based loop."]
+},
+{
+  "id": "cpp_int_14",
+  "question": "Arrange the code to use map.",
+  "blocks": ["#include <map>", "map<int,string> m;", "m[1] = \"One\";"],
+  "answer": ["#include <map>", "map<int,string> m;", "m[1] = \"One\";"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Include map header."]
+},
+{
+  "id": "cpp_int_15",
+  "question": "Arrange the code to use pair.",
+  "blocks": ["#include <utility>", "pair<int,string> p = {1,\"One\"};"],
+  "answer": ["#include <utility>", "pair<int,string> p = {1,\"One\"};"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use pair container."]
+},
+
+{
+  "id": "cpp_int_16",
+  "question": "Arrange the code to find element using find.",
+  "blocks": ["#include <algorithm>", "int arr[3] = {1,2,3};", "auto it = find(arr, arr+3, 2);"],
+  "answer": ["#include <algorithm>", "int arr[3] = {1,2,3};", "auto it = find(arr, arr+3, 2);"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use find from algorithm."]
+},
+{
+  "id": "cpp_int_17",
+  "question": "Arrange the code to use sizeof.",
+  "blocks": ["int arr[3];", "cout << sizeof(arr);"],
+  "answer": ["int arr[3];", "cout << sizeof(arr);"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["sizeof returns bytes."]
+},
+{
+  "id": "cpp_int_18",
+  "question": "Arrange the code to use namespace std.",
+  "blocks": ["using namespace std;", "cout << \"Hello\";"],
+  "answer": ["using namespace std;", "cout << \"Hello\";"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Avoid std:: prefix."]
+},
+{
+  "id": "cpp_int_19",
+  "question": "Arrange the code to overload function.",
+  "blocks": ["int add(int a, int b);", "double add(double a, double b);"],
+  "answer": ["int add(int a, int b);", "double add(double a, double b);"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Same name, different types."]
+},
+{
+  "id": "cpp_int_20",
+  "question": "Arrange the code to use static variable.",
+  "blocks": ["static int count = 0;", "count++;"],
+  "answer": ["static int count = 0;", "count++;"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Static persists value."]
+},
+
+{
+  "id": "cpp_int_21",
+  "question": "Arrange the code to use vector push_back.",
+  "blocks": ["vector<int> v;", "v.push_back(5);", "cout << v[0];"],
+  "answer": ["vector<int> v;", "v.push_back(5);", "cout << v[0];"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["push_back adds element."]
+},
+{
+  "id": "cpp_int_22",
+  "question": "Arrange the code to check empty vector.",
+  "blocks": ["if (v.empty()) {", "cout << \"Empty\";", "}"],
+  "answer": ["if (v.empty()) {", "cout << \"Empty\";", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use empty()."]
+},
+{
+  "id": "cpp_int_23",
+  "question": "Arrange the code to erase element from vector.",
+  "blocks": ["vector<int> v = {1,2,3};", "v.erase(v.begin());"],
+  "answer": ["vector<int> v = {1,2,3};", "v.erase(v.begin());"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use erase."]
+},
+{
+  "id": "cpp_int_24",
+  "question": "Arrange the code to swap values.",
+  "blocks": ["int a=5,b=3;", "swap(a,b);"],
+  "answer": ["int a=5,b=3;", "swap(a,b);"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use swap function."]
+},
+{
+  "id": "cpp_int_25",
+  "question": "Arrange the code to use break in loop.",
+  "blocks": ["for(int i=0;i<5;i++){", "if(i==3) break;", "}"],
+  "answer": ["for(int i=0;i<5;i++){", "if(i==3) break;", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Break stops loop."]
+},
+{
+  "id": "cpp_int_26",
+  "question": "Arrange the code to use continue.",
+  "blocks": ["for(int i=0;i<5;i++){", "if(i==2) continue;", "}"],
+  "answer": ["for(int i=0;i<5;i++){", "if(i==2) continue;", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Continue skips iteration."]
+},
+{
+  "id": "cpp_int_27",
+  "question": "Arrange the code to calculate factorial using loop.",
+  "blocks": ["int fact=1;", "for(int i=1;i<=5;i++){", "fact*=i;", "}"],
+  "answer": ["int fact=1;", "for(int i=1;i<=5;i++){", "fact*=i;", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Multiply inside loop."]
+},
+{
+  "id": "cpp_int_28",
+  "question": "Arrange the code to count vowels in string.",
+  "blocks": ["int count=0;", "for(char c: s){", "if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') count++;", "}"],
+  "answer": ["int count=0;", "for(char c: s){", "if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u') count++;", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Use range loop."]
+},
+{
+  "id": "cpp_int_29",
+  "question": "Arrange the code to define destructor.",
+  "blocks": ["class A {", "public:", "~A() { cout << \"Destroyed\"; }", "};"],
+  "answer": ["class A {", "public:", "~A() { cout << \"Destroyed\"; }", "};"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["Destructor uses ~."]
+},
+{
+  "id": "cpp_int_30",
+  "question": "Arrange the code to use const reference.",
+  "blocks": ["void print(const int &x) {", "cout << x;", "}"],
+  "answer": ["void print(const int &x) {", "cout << x;", "}"],
+  "difficulty": "intermediate",
+  "language": "C++",
+  "hints": ["const before reference."]
+},
+{
+  "id": "cpp_adv_1",
+  "question": "Arrange the code for factorial using recursion.",
+  "blocks": ["int fact(int n) {", "if(n==0) return 1;", "return n * fact(n-1);", "}"],
+  "answer": ["int fact(int n) {", "if(n==0) return 1;", "return n * fact(n-1);", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Base case first.", "Recursive call multiplies."]
+},
+{
+  "id": "cpp_adv_2",
+  "question": "Arrange nested loop to print pattern.",
+  "blocks": ["for(int i=1;i<=3;i++){", "for(int j=1;j<=i;j++){", "cout<<\"*\";", "}", "}"],
+  "answer": ["for(int i=1;i<=3;i++){", "for(int j=1;j<=i;j++){", "cout<<\"*\";", "}", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Outer loop first."]
+},
+{
+  "id": "cpp_adv_3",
+  "question": "Arrange code for class inheritance.",
+  "blocks": ["class A {};", "class B : public A {};", "B obj;"],
+  "answer": ["class A {};", "class B : public A {};", "B obj;"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use : public."]
+},
+{
+  "id": "cpp_adv_4",
+  "question": "Arrange virtual function example.",
+  "blocks": ["class A {", "public:", "virtual void show(){ cout<<\"A\"; }", "};"],
+  "answer": ["class A {", "public:", "virtual void show(){ cout<<\"A\"; }", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use virtual keyword."]
+},
+{
+  "id": "cpp_adv_5",
+  "question": "Arrange template function.",
+  "blocks": ["template<typename T>", "T add(T a,T b){", "return a+b;", "}"],
+  "answer": ["template<typename T>", "T add(T a,T b){", "return a+b;", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Template before function."]
+},
+
+{
+  "id": "cpp_adv_6",
+  "question": "Arrange code to use lambda.",
+  "blocks": ["auto sum = [](int a,int b){", "return a+b;", "};"],
+  "answer": ["auto sum = [](int a,int b){", "return a+b;", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use [] for lambda."]
+},
+{
+  "id": "cpp_adv_7",
+  "question": "Arrange code to use exception handling.",
+  "blocks": ["try{", "throw 10;", "} catch(int e){", "cout<<e;", "}"],
+  "answer": ["try{", "throw 10;", "} catch(int e){", "cout<<e;", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Try block first."]
+},
+{
+  "id": "cpp_adv_8",
+  "question": "Arrange code to open file.",
+  "blocks": ["#include <fstream>", "ofstream file(\"test.txt\");", "file<<\"Hello\";"],
+  "answer": ["#include <fstream>", "ofstream file(\"test.txt\");", "file<<\"Hello\";"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Include fstream."]
+},
+{
+  "id": "cpp_adv_9",
+  "question": "Arrange code to read file.",
+  "blocks": ["ifstream file(\"test.txt\");", "string line;", "getline(file,line);"],
+  "answer": ["ifstream file(\"test.txt\");", "string line;", "getline(file,line);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use getline."]
+},
+{
+  "id": "cpp_adv_10",
+  "question": "Arrange code to use vector iterator.",
+  "blocks": ["vector<int> v={1,2};", "for(auto it=v.begin();it!=v.end();it++){", "cout<<*it;", "}"],
+  "answer": ["vector<int> v={1,2};", "for(auto it=v.begin();it!=v.end();it++){", "cout<<*it;", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use begin() and end()."]
+},
+
+{
+  "id": "cpp_adv_11",
+  "question": "Arrange code to use map iterator.",
+  "blocks": ["map<int,int> m;", "for(auto it=m.begin();it!=m.end();it++){", "cout<<it->first;", "}"],
+  "answer": ["map<int,int> m;", "for(auto it=m.begin();it!=m.end();it++){", "cout<<it->first;", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use -> for pair."]
+},
+{
+  "id": "cpp_adv_12",
+  "question": "Arrange code to use set.",
+  "blocks": ["#include <set>", "set<int> s;", "s.insert(5);"],
+  "answer": ["#include <set>", "set<int> s;", "s.insert(5);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Include set header."]
+},
+{
+  "id": "cpp_adv_13",
+  "question": "Arrange code to count elements in set.",
+  "blocks": ["set<int> s={1,2,3};", "cout<<s.size();"],
+  "answer": ["set<int> s={1,2,3};", "cout<<s.size();"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use size()."]
+},
+{
+  "id": "cpp_adv_14",
+  "question": "Arrange code to use stack.",
+  "blocks": ["#include <stack>", "stack<int> st;", "st.push(5);"],
+  "answer": ["#include <stack>", "stack<int> st;", "st.push(5);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Push element."]
+},
+{
+  "id": "cpp_adv_15",
+  "question": "Arrange code to use queue.",
+  "blocks": ["#include <queue>", "queue<int> q;", "q.push(1);"],
+  "answer": ["#include <queue>", "queue<int> q;", "q.push(1);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Include queue."]
+},
+
+{
+  "id": "cpp_adv_16",
+  "question": "Arrange code for binary search.",
+  "blocks": ["#include <algorithm>", "int arr[3]={1,2,3};", "binary_search(arr,arr+3,2);"],
+  "answer": ["#include <algorithm>", "int arr[3]={1,2,3};", "binary_search(arr,arr+3,2);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Array must be sorted."]
+},
+{
+  "id": "cpp_adv_17",
+  "question": "Arrange code for lower_bound.",
+  "blocks": ["int arr[3]={1,2,3};", "auto it=lower_bound(arr,arr+3,2);"],
+  "answer": ["int arr[3]={1,2,3};", "auto it=lower_bound(arr,arr+3,2);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Returns iterator."]
+},
+{
+  "id": "cpp_adv_18",
+  "question": "Arrange code to use function pointer.",
+  "blocks": ["int add(int a,int b){return a+b;}", "int (*ptr)(int,int)=add;", "cout<<ptr(2,3);"],
+  "answer": ["int add(int a,int b){return a+b;}", "int (*ptr)(int,int)=add;", "cout<<ptr(2,3);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Pointer to function."]
+},
+{
+  "id": "cpp_adv_19",
+  "question": "Arrange code for copy constructor.",
+  "blocks": ["class A{", "public:", "A(const A &obj){}", "};"],
+  "answer": ["class A{", "public:", "A(const A &obj){}", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Pass by const reference."]
+},
+{
+  "id": "cpp_adv_20",
+  "question": "Arrange code for operator overloading.",
+  "blocks": ["class A{", "public:", "A operator+(A obj){ return obj; }", "};"],
+  "answer": ["class A{", "public:", "A operator+(A obj){ return obj; }", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use operator keyword."]
+},
+
+{
+  "id": "cpp_adv_21",
+  "question": "Arrange code to use vector sort descending.",
+  "blocks": ["vector<int> v={3,1,2};", "sort(v.begin(),v.end(),greater<int>());"],
+  "answer": ["vector<int> v={3,1,2};", "sort(v.begin(),v.end(),greater<int>());"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use greater<int>()."]
+},
+{
+  "id": "cpp_adv_22",
+  "question": "Arrange code for recursive Fibonacci.",
+  "blocks": ["int fib(int n){", "if(n<=1) return n;", "return fib(n-1)+fib(n-2);", "}"],
+  "answer": ["int fib(int n){", "if(n<=1) return n;", "return fib(n-1)+fib(n-2);", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Two recursive calls."]
+},
+{
+  "id": "cpp_adv_23",
+  "question": "Arrange code for struct.",
+  "blocks": ["struct Point{", "int x;", "int y;", "};"],
+  "answer": ["struct Point{", "int x;", "int y;", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Struct holds variables."]
+},
+{
+  "id": "cpp_adv_24",
+  "question": "Arrange code for static member.",
+  "blocks": ["class A{", "public:", "static int count;", "};"],
+  "answer": ["class A{", "public:", "static int count;", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Static shared by class."]
+},
+{
+  "id": "cpp_adv_25",
+  "question": "Arrange code for friend function.",
+  "blocks": ["class A{", "friend void show();", "};"],
+  "answer": ["class A{", "friend void show();", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use friend keyword."]
+},
+
+{
+  "id": "cpp_adv_26",
+  "question": "Arrange code for enum.",
+  "blocks": ["enum Day{", "MON,TUE,WED", "};"],
+  "answer": ["enum Day{", "MON,TUE,WED", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Enum defines constants."]
+},
+{
+  "id": "cpp_adv_27",
+  "question": "Arrange code for vector clear.",
+  "blocks": ["vector<int> v={1,2};", "v.clear();"],
+  "answer": ["vector<int> v={1,2};", "v.clear();"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Clear removes elements."]
+},
+{
+  "id": "cpp_adv_28",
+  "question": "Arrange code for capacity.",
+  "blocks": ["vector<int> v;", "cout<<v.capacity();"],
+  "answer": ["vector<int> v;", "cout<<v.capacity();"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Capacity != size."]
+},
+{
+  "id": "cpp_adv_29",
+  "question": "Arrange code for pointer arithmetic.",
+  "blocks": ["int arr[3]={1,2,3};", "int *p=arr;", "cout<<*(p+1);"],
+  "answer": ["int arr[3]={1,2,3};", "int *p=arr;", "cout<<*(p+1);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Pointer increments."]
+},
+{
+  "id": "cpp_adv_30",
+  "question": "Arrange code for dynamic array.",
+  "blocks": ["int *arr=new int[3];", "delete[] arr;"],
+  "answer": ["int *arr=new int[3];", "delete[] arr;"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use delete[]."]
+},
+
+{
+  "id": "cpp_adv_31",
+  "question": "Arrange code for multilevel inheritance.",
+  "blocks": ["class A{};", "class B:public A{};", "class C:public B{};"],
+  "answer": ["class A{};", "class B:public A{};", "class C:public B{};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Chain inheritance."]
+},
+{
+  "id": "cpp_adv_32",
+  "question": "Arrange code for pure virtual function.",
+  "blocks": ["class A{", "public:", "virtual void show()=0;", "};"],
+  "answer": ["class A{", "public:", "virtual void show()=0;", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["=0 makes abstract."]
+},
+{
+  "id": "cpp_adv_33",
+  "question": "Arrange code for vector resize.",
+  "blocks": ["vector<int> v={1,2};", "v.resize(5);"],
+  "answer": ["vector<int> v={1,2};", "v.resize(5);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Resize changes size."]
+},
+{
+  "id": "cpp_adv_34",
+  "question": "Arrange code for list container.",
+  "blocks": ["#include <list>", "list<int> l;", "l.push_back(1);"],
+  "answer": ["#include <list>", "list<int> l;", "l.push_back(1);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Include list header."]
+},
+{
+  "id": "cpp_adv_35",
+  "question": "Arrange code for unordered_map.",
+  "blocks": ["#include <unordered_map>", "unordered_map<int,int> m;", "m[1]=2;"],
+  "answer": ["#include <unordered_map>", "unordered_map<int,int> m;", "m[1]=2;"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Hash map container."]
+},
+{
+  "id": "cpp_adv_36",
+  "question": "Arrange code for function inline.",
+  "blocks": ["inline int square(int x){", "return x*x;", "}"],
+  "answer": ["inline int square(int x){", "return x*x;", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Use inline keyword."]
+},
+{
+  "id": "cpp_adv_37",
+  "question": "Arrange code for vector pop_back.",
+  "blocks": ["vector<int> v={1,2};", "v.pop_back();"],
+  "answer": ["vector<int> v={1,2};", "v.pop_back();"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Removes last element."]
+},
+{
+  "id": "cpp_adv_38",
+  "question": "Arrange code for dynamic casting.",
+  "blocks": ["class A{public:virtual void f(){};};", "class B:public A{};", "B b;", "A* ptr=&b;", "dynamic_cast<B*>(ptr);"],
+  "answer": ["class A{public:virtual void f(){};};", "class B:public A{};", "B b;", "A* ptr=&b;", "dynamic_cast<B*>(ptr);"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Requires polymorphic base."]
+},
+{
+  "id": "cpp_adv_39",
+  "question": "Arrange code for mutable keyword.",
+  "blocks": ["class A{", "public:", "mutable int x;", "};"],
+  "answer": ["class A{", "public:", "mutable int x;", "};"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Mutable changes const object."]
+},
+{
+  "id": "cpp_adv_40",
+  "question": "Arrange code for constexpr.",
+  "blocks": ["constexpr int square(int x){", "return x*x;", "}"],
+  "answer": ["constexpr int square(int x){", "return x*x;", "}"],
+  "difficulty": "advanced",
+  "language": "C++",
+  "hints": ["Compile-time evaluation."]
+},
+{
+  "id": "java_beg_1",
+  "question": "Print Hello World in Java.",
+  "blocks": ["public class Main {", "public static void main(String[] args) {", "System.out.println(\"Hello World\");", "}", "}"],
+  "answer": ["public class Main {", "public static void main(String[] args) {", "System.out.println(\"Hello World\");", "}", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use System.out.println."]
+},
+{
+  "id": "java_beg_2",
+  "question": "Declare an integer variable with value 10.",
+  "blocks": ["int x = 10;", "System.out.println(x);"],
+  "answer": ["int x = 10;", "System.out.println(x);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use int datatype."]
+},
+{
+  "id": "java_beg_3",
+  "question": "Write an if statement checking x > 5.",
+  "blocks": ["if(x > 5) {", "System.out.println(\"Greater\");", "}"],
+  "answer": ["if(x > 5) {", "System.out.println(\"Greater\");", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use if(condition)."]
+},
+{
+  "id": "java_beg_4",
+  "question": "Print numbers 1 to 5 using for loop.",
+  "blocks": ["for(int i=1;i<=5;i++) {", "System.out.println(i);", "}"],
+  "answer": ["for(int i=1;i<=5;i++) {", "System.out.println(i);", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Initialize i=1."]
+},
+{
+  "id": "java_beg_5",
+  "question": "Declare and print an array.",
+  "blocks": ["int[] arr = {1,2,3};", "System.out.println(arr[0]);"],
+  "answer": ["int[] arr = {1,2,3};", "System.out.println(arr[0]);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use square brackets."]
+},
+{
+  "id": "java_beg_6",
+  "question": "Write a while loop printing 0 to 2.",
+  "blocks": ["int i=0;", "while(i<3) {", "System.out.println(i);", "i++;", "}"],
+  "answer": ["int i=0;", "while(i<3) {", "System.out.println(i);", "i++;", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Increment inside loop."]
+},
+{
+  "id": "java_beg_7",
+  "question": "Declare a method that returns sum of two numbers.",
+  "blocks": ["static int add(int a,int b) {", "return a+b;", "}"],
+  "answer": ["static int add(int a,int b) {", "return a+b;", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use return statement."]
+},
+{
+  "id": "java_beg_8",
+  "question": "Create a simple class with one variable.",
+  "blocks": ["class Person {", "int age;", "}"],
+  "answer": ["class Person {", "int age;", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use class keyword."]
+},
+{
+  "id": "java_beg_9",
+  "question": "Use Scanner to take input.",
+  "blocks": ["import java.util.Scanner;", "Scanner sc = new Scanner(System.in);", "int x = sc.nextInt();"],
+  "answer": ["import java.util.Scanner;", "Scanner sc = new Scanner(System.in);", "int x = sc.nextInt();"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Import Scanner class."]
+},
+{
+  "id": "java_beg_10",
+  "question": "Write switch case statement.",
+  "blocks": ["switch(x) {", "case 1:", "System.out.println(\"One\");", "break;", "}"],
+  "answer": ["switch(x) {", "case 1:", "System.out.println(\"One\");", "break;", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use break after case."]
+},
+{
+  "id": "java_beg_11",
+  "question": "Use boolean variable.",
+  "blocks": ["boolean flag = true;", "System.out.println(flag);"],
+  "answer": ["boolean flag = true;", "System.out.println(flag);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use boolean datatype."]
+},
+{
+  "id": "java_beg_12",
+  "question": "Write do-while loop.",
+  "blocks": ["int i=0;", "do {", "System.out.println(i);", "i++;", "} while(i<3);"],
+  "answer": ["int i=0;", "do {", "System.out.println(i);", "i++;", "} while(i<3);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Condition at end."]
+},
+{
+  "id": "java_beg_13",
+  "question": "Declare String variable.",
+  "blocks": ["String name = \"John\";", "System.out.println(name);"],
+  "answer": ["String name = \"John\";", "System.out.println(name);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["String starts with capital S."]
+},
+{
+  "id": "java_beg_14",
+  "question": "Use equals method for String comparison.",
+  "blocks": ["String a=\"Hi\";", "if(a.equals(\"Hi\")) {", "System.out.println(\"Match\");", "}"],
+  "answer": ["String a=\"Hi\";", "if(a.equals(\"Hi\")) {", "System.out.println(\"Match\");", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use equals() not ==."]
+},
+{
+  "id": "java_beg_15",
+  "question": "Declare double variable.",
+  "blocks": ["double pi = 3.14;", "System.out.println(pi);"],
+  "answer": ["double pi = 3.14;", "System.out.println(pi);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use double datatype."]
+},
+{
+  "id": "java_beg_16",
+  "question": "Use ternary operator.",
+  "blocks": ["int result = (x>5) ? 1 : 0;", "System.out.println(result);"],
+  "answer": ["int result = (x>5) ? 1 : 0;", "System.out.println(result);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["condition ? true : false"]
+},
+{
+  "id": "java_beg_17",
+  "question": "Create object of class.",
+  "blocks": ["Person p = new Person();", "System.out.println(p.age);"],
+  "answer": ["Person p = new Person();", "System.out.println(p.age);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use new keyword."]
+},
+{
+  "id": "java_beg_18",
+  "question": "Declare constant variable.",
+  "blocks": ["final int MAX = 100;", "System.out.println(MAX);"],
+  "answer": ["final int MAX = 100;", "System.out.println(MAX);"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use final keyword."]
+},
+{
+  "id": "java_beg_19",
+  "question": "Print array using for-each.",
+  "blocks": ["int[] arr={1,2,3};", "for(int num:arr){", "System.out.println(num);", "}"],
+  "answer": ["int[] arr={1,2,3};", "for(int num:arr){", "System.out.println(num);", "}"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Use colon in for-each."]
+},
+{
+  "id": "java_beg_20",
+  "question": "Write comment in Java.",
+  "blocks": ["// This is comment", "System.out.println(\"Done\");"],
+  "answer": ["// This is comment", "System.out.println(\"Done\");"],
+  "difficulty": "beginner",
+  "language": "Java",
+  "hints": ["Single line comment starts with //"]
+},
+{
+  "id": "java_int_1",
+  "question": "Create a constructor in Java.",
+  "blocks": ["class Person {", "int age;", "Person(int a){", "age = a;", "}", "}"],
+  "answer": ["class Person {", "int age;", "Person(int a){", "age = a;", "}", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Constructor name same as class."]
+},
+{
+  "id": "java_int_2",
+  "question": "Demonstrate inheritance.",
+  "blocks": ["class A {}", "class B extends A {}", "B obj = new B();"],
+  "answer": ["class A {}", "class B extends A {}", "B obj = new B();"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use extends keyword."]
+},
+{
+  "id": "java_int_3",
+  "question": "Override a method.",
+  "blocks": ["class A {", "void show(){ System.out.println(\"A\"); }", "}", "class B extends A {", "@Override", "void show(){ System.out.println(\"B\"); }", "}"],
+  "answer": ["class A {", "void show(){ System.out.println(\"A\"); }", "}", "class B extends A {", "@Override", "void show(){ System.out.println(\"B\"); }", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use @Override."]
+},
+{
+  "id": "java_int_4",
+  "question": "Create ArrayList and add elements.",
+  "blocks": ["import java.util.ArrayList;", "ArrayList<Integer> list = new ArrayList<>();", "list.add(5);"],
+  "answer": ["import java.util.ArrayList;", "ArrayList<Integer> list = new ArrayList<>();", "list.add(5);"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use add() method."]
+},
+{
+  "id": "java_int_5",
+  "question": "Use try-catch block.",
+  "blocks": ["try {", "int x = 5/0;", "} catch(Exception e) {", "System.out.println(\"Error\");", "}"],
+  "answer": ["try {", "int x = 5/0;", "} catch(Exception e) {", "System.out.println(\"Error\");", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Exception handling."]
+},
+{
+  "id": "java_int_6",
+  "question": "Implement interface.",
+  "blocks": ["interface Animal {", "void sound();", "}", "class Dog implements Animal {", "public void sound(){", "System.out.println(\"Bark\");", "}", "}"],
+  "answer": ["interface Animal {", "void sound();", "}", "class Dog implements Animal {", "public void sound(){", "System.out.println(\"Bark\");", "}", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use implements."]
+},
+{
+  "id": "java_int_7",
+  "question": "Use recursion for factorial.",
+  "blocks": ["static int fact(int n){", "if(n==0) return 1;", "return n * fact(n-1);", "}"],
+  "answer": ["static int fact(int n){", "if(n==0) return 1;", "return n * fact(n-1);", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Base case first."]
+},
+{
+  "id": "java_int_8",
+  "question": "Use String length method.",
+  "blocks": ["String s = \"Hello\";", "System.out.println(s.length());"],
+  "answer": ["String s = \"Hello\";", "System.out.println(s.length());"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use length() method."]
+},
+{
+  "id": "java_int_9",
+  "question": "Use HashMap.",
+  "blocks": ["import java.util.HashMap;", "HashMap<Integer,String> map = new HashMap<>();", "map.put(1,\"One\");"],
+  "answer": ["import java.util.HashMap;", "HashMap<Integer,String> map = new HashMap<>();", "map.put(1,\"One\");"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use put() method."]
+},
+{
+  "id": "java_int_10",
+  "question": "Use for-each loop on ArrayList.",
+  "blocks": ["for(int num : list) {", "System.out.println(num);", "}"],
+  "answer": ["for(int num : list) {", "System.out.println(num);", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use colon syntax."]
+},
+{
+  "id": "java_int_11",
+  "question": "Use static method.",
+  "blocks": ["class Test {", "static void show(){", "System.out.println(\"Static\");", "}", "}"],
+  "answer": ["class Test {", "static void show(){", "System.out.println(\"Static\");", "}", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Static belongs to class."]
+},
+{
+  "id": "java_int_12",
+  "question": "Create multiple constructors.",
+  "blocks": ["class A {", "A(){}", "A(int x){}", "}"],
+  "answer": ["class A {", "A(){}", "A(int x){}", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Constructor overloading."]
+},
+{
+  "id": "java_int_13",
+  "question": "Use final keyword in method.",
+  "blocks": ["class A {", "final void show(){}", "}"],
+  "answer": ["class A {", "final void show(){}", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Cannot override final method."]
+},
+{
+  "id": "java_int_14",
+  "question": "Use this keyword.",
+  "blocks": ["class A {", "int x;", "A(int x){", "this.x = x;", "}", "}"],
+  "answer": ["class A {", "int x;", "A(int x){", "this.x = x;", "}", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["this refers to current object."]
+},
+{
+  "id": "java_int_15",
+  "question": "Use super keyword.",
+  "blocks": ["class A { A(){ System.out.println(\"A\"); } }", "class B extends A { B(){ super(); } }"],
+  "answer": ["class A { A(){ System.out.println(\"A\"); } }", "class B extends A { B(){ super(); } }"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["super calls parent constructor."]
+},
+{
+  "id": "java_int_16",
+  "question": "Use Math class.",
+  "blocks": ["int x = Math.max(5,10);", "System.out.println(x);"],
+  "answer": ["int x = Math.max(5,10);", "System.out.println(x);"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use Math.max()."]
+},
+{
+  "id": "java_int_17",
+  "question": "Throw custom exception.",
+  "blocks": ["if(x<0){", "throw new IllegalArgumentException();", "}"],
+  "answer": ["if(x<0){", "throw new IllegalArgumentException();", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use throw keyword."]
+},
+{
+  "id": "java_int_18",
+  "question": "Use contains method in String.",
+  "blocks": ["String s=\"Hello\";", "if(s.contains(\"He\")){", "System.out.println(\"Yes\");", "}"],
+  "answer": ["String s=\"Hello\";", "if(s.contains(\"He\")){", "System.out.println(\"Yes\");", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use contains()."]
+},
+{
+  "id": "java_int_19",
+  "question": "Convert String to int.",
+  "blocks": ["String s=\"10\";", "int x = Integer.parseInt(s);"],
+  "answer": ["String s=\"10\";", "int x = Integer.parseInt(s);"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use parseInt()."]
+},
+{
+  "id": "java_int_20",
+  "question": "Use equalsIgnoreCase.",
+  "blocks": ["String s=\"HELLO\";", "if(s.equalsIgnoreCase(\"hello\")){", "System.out.println(\"Match\");", "}"],
+  "answer": ["String s=\"HELLO\";", "if(s.equalsIgnoreCase(\"hello\")){", "System.out.println(\"Match\");", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Ignore case."]
+},
+{
+  "id": "java_int_21",
+  "question": "Use remove method in ArrayList.",
+  "blocks": ["list.remove(0);"],
+  "answer": ["list.remove(0);"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Remove by index."]
+},
+{
+  "id": "java_int_22",
+  "question": "Use Collections.sort.",
+  "blocks": ["import java.util.Collections;", "Collections.sort(list);"],
+  "answer": ["import java.util.Collections;", "Collections.sort(list);"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Sort list."]
+},
+{
+  "id": "java_int_23",
+  "question": "Declare abstract class.",
+  "blocks": ["abstract class Shape {", "abstract void draw();", "}"],
+  "answer": ["abstract class Shape {", "abstract void draw();", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Use abstract keyword."]
+},
+{
+  "id": "java_int_24",
+  "question": "Use instanceof.",
+  "blocks": ["if(obj instanceof Person){", "System.out.println(\"Yes\");", "}"],
+  "answer": ["if(obj instanceof Person){", "System.out.println(\"Yes\");", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Check object type."]
+},
+{
+  "id": "java_int_25",
+  "question": "Use break in loop.",
+  "blocks": ["for(int i=0;i<5;i++){", "if(i==3) break;", "}"],
+  "answer": ["for(int i=0;i<5;i++){", "if(i==3) break;", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Break exits loop."]
+},
+{
+  "id": "java_int_26",
+  "question": "Use continue in loop.",
+  "blocks": ["for(int i=0;i<5;i++){", "if(i==2) continue;", "}"],
+  "answer": ["for(int i=0;i<5;i++){", "if(i==2) continue;", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Continue skips iteration."]
+},
+{
+  "id": "java_int_27",
+  "question": "Use wrapper class.",
+  "blocks": ["Integer x = 10;", "System.out.println(x);"],
+  "answer": ["Integer x = 10;", "System.out.println(x);"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Wrapper class Integer."]
+},
+{
+  "id": "java_int_28",
+  "question": "Use toUpperCase method.",
+  "blocks": ["String s=\"hello\";", "System.out.println(s.toUpperCase());"],
+  "answer": ["String s=\"hello\";", "System.out.println(s.toUpperCase());"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Convert to uppercase."]
+},
+{
+  "id": "java_int_29",
+  "question": "Use split method.",
+  "blocks": ["String s=\"a,b,c\";", "String[] arr = s.split(\",\");"],
+  "answer": ["String s=\"a,b,c\";", "String[] arr = s.split(\",\");"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Split by comma."]
+},
+{
+  "id": "java_int_30",
+  "question": "Use recursion for Fibonacci.",
+  "blocks": ["static int fib(int n){", "if(n<=1) return n;", "return fib(n-1)+fib(n-2);", "}"],
+  "answer": ["static int fib(int n){", "if(n<=1) return n;", "return fib(n-1)+fib(n-2);", "}"],
+  "difficulty": "intermediate",
+  "language": "Java",
+  "hints": ["Two recursive calls."]
+},
+{
+  "id": "java_adv_1",
+  "question": "Create abstract class with method.",
+  "blocks": ["abstract class Shape {", "abstract void draw();", "}"],
+  "answer": ["abstract class Shape {", "abstract void draw();", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Abstract class cannot be instantiated."]
+},
+{
+  "id": "java_adv_2",
+  "question": "Implement multiple interfaces.",
+  "blocks": ["interface A {}", "interface B {}", "class C implements A,B {}"],
+  "answer": ["interface A {}", "interface B {}", "class C implements A,B {}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Use comma to implement multiple interfaces."]
+},
+{
+  "id": "java_adv_3",
+  "question": "Use generic class.",
+  "blocks": ["class Box<T> {", "T value;", "}"],
+  "answer": ["class Box<T> {", "T value;", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Use <T> for generics."]
+},
+{
+  "id": "java_adv_4",
+  "question": "Use Comparator interface.",
+  "blocks": ["import java.util.Comparator;", "class MyComp implements Comparator<Integer>{", "public int compare(Integer a,Integer b){", "return a-b;", "}", "}"],
+  "answer": ["import java.util.Comparator;", "class MyComp implements Comparator<Integer>{", "public int compare(Integer a,Integer b){", "return a-b;", "}", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Override compare method."]
+},
+{
+  "id": "java_adv_5",
+  "question": "Create thread by extending Thread class.",
+  "blocks": ["class MyThread extends Thread{", "public void run(){", "System.out.println(\"Running\");", "}", "}"],
+  "answer": ["class MyThread extends Thread{", "public void run(){", "System.out.println(\"Running\");", "}", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Override run()."]
+},
+{
+  "id": "java_adv_6",
+  "question": "Create thread using Runnable.",
+  "blocks": ["class MyTask implements Runnable{", "public void run(){", "System.out.println(\"Task\");", "}", "}"],
+  "answer": ["class MyTask implements Runnable{", "public void run(){", "System.out.println(\"Task\");", "}", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Implement Runnable."]
+},
+{
+  "id": "java_adv_7",
+  "question": "Use synchronized method.",
+  "blocks": ["synchronized void show(){", "System.out.println(\"Sync\");", "}"],
+  "answer": ["synchronized void show(){", "System.out.println(\"Sync\");", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Prevents race condition."]
+},
+{
+  "id": "java_adv_8",
+  "question": "Use lambda expression.",
+  "blocks": ["Runnable r = () -> {", "System.out.println(\"Lambda\");", "};"],
+  "answer": ["Runnable r = () -> {", "System.out.println(\"Lambda\");", "};"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Use -> symbol."]
+},
+{
+  "id": "java_adv_9",
+  "question": "Use Stream API.",
+  "blocks": ["list.stream()", ".filter(x -> x>5)", ".forEach(System.out::println);"],
+  "answer": ["list.stream()", ".filter(x -> x>5)", ".forEach(System.out::println);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Streams support filter."]
+},
+{
+  "id": "java_adv_10",
+  "question": "Use Optional class.",
+  "blocks": ["import java.util.Optional;", "Optional<String> opt = Optional.of(\"Hello\");", "opt.ifPresent(System.out::println);"],
+  "answer": ["import java.util.Optional;", "Optional<String> opt = Optional.of(\"Hello\");", "opt.ifPresent(System.out::println);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Avoid NullPointerException."]
+},
+{
+  "id": "java_adv_11",
+  "question": "Serialize an object.",
+  "blocks": ["class Person implements Serializable {", "int age;", "}"],
+  "answer": ["class Person implements Serializable {", "int age;", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Implement Serializable."]
+},
+{
+  "id": "java_adv_12",
+  "question": "Write to file using FileWriter.",
+  "blocks": ["import java.io.FileWriter;", "FileWriter fw = new FileWriter(\"test.txt\");", "fw.write(\"Hello\");", "fw.close();"],
+  "answer": ["import java.io.FileWriter;", "FileWriter fw = new FileWriter(\"test.txt\");", "fw.write(\"Hello\");", "fw.close();"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Close file after writing."]
+},
+{
+  "id": "java_adv_13",
+  "question": "Read file using BufferedReader.",
+  "blocks": ["import java.io.BufferedReader;", "import java.io.FileReader;", "BufferedReader br = new BufferedReader(new FileReader(\"test.txt\"));", "br.readLine();"],
+  "answer": ["import java.io.BufferedReader;", "import java.io.FileReader;", "BufferedReader br = new BufferedReader(new FileReader(\"test.txt\"));", "br.readLine();"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Use readLine()."]
+},
+{
+  "id": "java_adv_14",
+  "question": "Use TreeSet.",
+  "blocks": ["import java.util.TreeSet;", "TreeSet<Integer> set = new TreeSet<>();", "set.add(5);"],
+  "answer": ["import java.util.TreeSet;", "TreeSet<Integer> set = new TreeSet<>();", "set.add(5);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Sorted set."]
+},
+{
+  "id": "java_adv_15",
+  "question": "Use LinkedList.",
+  "blocks": ["import java.util.LinkedList;", "LinkedList<Integer> list = new LinkedList<>();", "list.add(1);"],
+  "answer": ["import java.util.LinkedList;", "LinkedList<Integer> list = new LinkedList<>();", "list.add(1);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Doubly linked list."]
+},
+
+{
+  "id": "java_adv_16",
+  "question": "Create custom exception.",
+  "blocks": ["class MyException extends Exception {", "MyException(String msg){", "super(msg);", "}", "}"],
+  "answer": ["class MyException extends Exception {", "MyException(String msg){", "super(msg);", "}", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Extend Exception class."]
+},
+{
+  "id": "java_adv_17",
+  "question": "Use throw and throws.",
+  "blocks": ["void test() throws Exception {", "throw new Exception();", "}"],
+  "answer": ["void test() throws Exception {", "throw new Exception();", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["throws in method signature."]
+},
+{
+  "id": "java_adv_18",
+  "question": "Use enum.",
+  "blocks": ["enum Day {", "MON,TUE,WED", "}"],
+  "answer": ["enum Day {", "MON,TUE,WED", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Enum defines constants."]
+},
+{
+  "id": "java_adv_19",
+  "question": "Use method reference.",
+  "blocks": ["list.forEach(System.out::println);"],
+  "answer": ["list.forEach(System.out::println);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Use :: operator."]
+},
+{
+  "id": "java_adv_20",
+  "question": "Use synchronized block.",
+  "blocks": ["synchronized(this){", "System.out.println(\"Block\");", "}"],
+  "answer": ["synchronized(this){", "System.out.println(\"Block\");", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Thread safety."]
+},
+
+{
+  "id": "java_adv_21",
+  "question": "Use ConcurrentHashMap.",
+  "blocks": ["import java.util.concurrent.ConcurrentHashMap;", "ConcurrentHashMap<Integer,String> map = new ConcurrentHashMap<>();"],
+  "answer": ["import java.util.concurrent.ConcurrentHashMap;", "ConcurrentHashMap<Integer,String> map = new ConcurrentHashMap<>();"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Thread-safe map."]
+},
+{
+  "id": "java_adv_22",
+  "question": "Use Callable interface.",
+  "blocks": ["import java.util.concurrent.Callable;", "class MyTask implements Callable<Integer>{", "public Integer call(){ return 1; }", "}"],
+  "answer": ["import java.util.concurrent.Callable;", "class MyTask implements Callable<Integer>{", "public Integer call(){ return 1; }", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Callable returns value."]
+},
+{
+  "id": "java_adv_23",
+  "question": "Use Future.",
+  "blocks": ["import java.util.concurrent.Future;", "Future<Integer> f;"],
+  "answer": ["import java.util.concurrent.Future;", "Future<Integer> f;"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Used with ExecutorService."]
+},
+{
+  "id": "java_adv_24",
+  "question": "Use Comparator lambda.",
+  "blocks": ["Collections.sort(list,(a,b)->a-b);"],
+  "answer": ["Collections.sort(list,(a,b)->a-b);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Lambda comparator."]
+},
+{
+  "id": "java_adv_25",
+  "question": "Use StringBuilder.",
+  "blocks": ["StringBuilder sb = new StringBuilder();", "sb.append(\"Hello\");"],
+  "answer": ["StringBuilder sb = new StringBuilder();", "sb.append(\"Hello\");"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Mutable string."]
+},
+
+{
+  "id": "java_adv_26",
+  "question": "Use synchronized list.",
+  "blocks": ["Collections.synchronizedList(new ArrayList<>());"],
+  "answer": ["Collections.synchronizedList(new ArrayList<>());"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Thread-safe list."]
+},
+{
+  "id": "java_adv_27",
+  "question": "Use stream map.",
+  "blocks": ["list.stream()", ".map(x -> x*2)", ".forEach(System.out::println);"],
+  "answer": ["list.stream()", ".map(x -> x*2)", ".forEach(System.out::println);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Map transforms data."]
+},
+{
+  "id": "java_adv_28",
+  "question": "Use filter and collect.",
+  "blocks": ["list.stream()", ".filter(x -> x>5)", ".collect(Collectors.toList());"],
+  "answer": ["list.stream()", ".filter(x -> x>5)", ".collect(Collectors.toList());"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Collect result."]
+},
+{
+  "id": "java_adv_29",
+  "question": "Create immutable class.",
+  "blocks": ["final class Person {", "private final int age;", "}"],
+  "answer": ["final class Person {", "private final int age;", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Class and variables final."]
+},
+{
+  "id": "java_adv_30",
+  "question": "Use Runtime class.",
+  "blocks": ["Runtime r = Runtime.getRuntime();", "r.gc();"],
+  "answer": ["Runtime r = Runtime.getRuntime();", "r.gc();"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Call garbage collector."]
+},
+
+{
+  "id": "java_adv_31",
+  "question": "Use Thread.sleep.",
+  "blocks": ["Thread.sleep(1000);"],
+  "answer": ["Thread.sleep(1000);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Pause thread."]
+},
+{
+  "id": "java_adv_32",
+  "question": "Create daemon thread.",
+  "blocks": ["Thread t = new Thread();", "t.setDaemon(true);"],
+  "answer": ["Thread t = new Thread();", "t.setDaemon(true);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Background thread."]
+},
+{
+  "id": "java_adv_33",
+  "question": "Use ExecutorService.",
+  "blocks": ["import java.util.concurrent.ExecutorService;", "ExecutorService ex = Executors.newFixedThreadPool(2);"],
+  "answer": ["import java.util.concurrent.ExecutorService;", "ExecutorService ex = Executors.newFixedThreadPool(2);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Thread pool."]
+},
+{
+  "id": "java_adv_34",
+  "question": "Shutdown ExecutorService.",
+  "blocks": ["ex.shutdown();"],
+  "answer": ["ex.shutdown();"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Release threads."]
+},
+{
+  "id": "java_adv_35",
+  "question": "Use Optional.orElse.",
+  "blocks": ["Optional<String> opt = Optional.empty();", "System.out.println(opt.orElse(\"Default\"));"],
+  "answer": ["Optional<String> opt = Optional.empty();", "System.out.println(opt.orElse(\"Default\"));"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Return default value."]
+},
+
+{
+  "id": "java_adv_36",
+  "question": "Use parallel stream.",
+  "blocks": ["list.parallelStream()", ".forEach(System.out::println);"],
+  "answer": ["list.parallelStream()", ".forEach(System.out::println);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Parallel processing."]
+},
+{
+  "id": "java_adv_37",
+  "question": "Use method chaining.",
+  "blocks": ["String s=\"hello\";", "s.trim().toUpperCase();"],
+  "answer": ["String s=\"hello\";", "s.trim().toUpperCase();"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Call multiple methods."]
+},
+{
+  "id": "java_adv_38",
+  "question": "Use instanceof with pattern matching (modern Java).",
+  "blocks": ["if(obj instanceof String s){", "System.out.println(s.length());", "}"],
+  "answer": ["if(obj instanceof String s){", "System.out.println(s.length());", "}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Pattern matching syntax."]
+},
+{
+  "id": "java_adv_39",
+  "question": "Use record (Java 16+).",
+  "blocks": ["record Person(int age) {}", "Person p = new Person(10);"],
+  "answer": ["record Person(int age) {}", "Person p = new Person(10);"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Record is immutable data class."]
+},
+{
+  "id": "java_adv_40",
+  "question": "Use sealed class.",
+  "blocks": ["sealed class Shape permits Circle {}", "final class Circle extends Shape {}"],
+  "answer": ["sealed class Shape permits Circle {}", "final class Circle extends Shape {}"],
+  "difficulty": "advanced",
+  "language": "Java",
+  "hints": ["Sealed restricts inheritance."]
+}
 ]
+
+
+
+
+

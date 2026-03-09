@@ -11,9 +11,16 @@ const userSchema = new mongoose.Schema({
   puzzlesCompleted: { type: Number, default: 0 },
   coins: { type: Number, default: 0 },
 
+   solvedQuestions: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Question"
+  }],
+
   currentPuzzleIndex: { type: Number, default: 0 },
   currentDifficulty: { type: String, default: "beginner" },
   currentLanguage: { type: String, default: "JavaScript" },
+
+ 
   
   createdAt: { type: Date, default: Date.now },
 

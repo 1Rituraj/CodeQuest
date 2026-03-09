@@ -3,7 +3,9 @@ import { getPlayerAnalytics, getStreak  } from "../controllers/analyticsControll
 
 const router = express.Router();
 
-router.get("/:userId", getPlayerAnalytics);
+// router.get("/:userId/solved", getSolvedQuestions)
+
 
 router.get("/streak/:userId", getStreak);
+router.get("/:userId", getPlayerAnalytics);
 export default router;

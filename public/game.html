@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Select Game Mode - CodeQuest</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- <script src="js/puzzle.js" defer></script> -->
 </head>
 <body>
   <!-- 🔒 Login protection -->
@@ -37,7 +38,11 @@
       <option value="C++">C++</option>
       <option value="Java">Java</option>
       <option value="JavaScript">JavaScript</option>
+      <option value="C">C</option>
     </select>
+
+    <label for="topic">Enter Topic:</label>
+    <input type="text" id="topic" placeholder="e.g. Recursion" required />
 
     <button onclick="startPuzzle()">Start Puzzle</button>
   </div>
@@ -72,14 +77,17 @@
     const mode = document.getElementById('mode').value;
     const difficulty = document.getElementById('difficulty').value;
     const language = document.getElementById('language').value;
+    const topic = document.getElementById("topic").value.trim();
 
     localStorage.setItem('gameMode', mode);
     localStorage.setItem('difficulty', difficulty);
     localStorage.setItem('preferredLanguage', language);
-
+    localStorage.setItem("selectedTopic", topic);
+    
     // ✅ Redirect based on selected mode
     if (mode === "single") {
       window.location.href = "puzzle.html";
+      
     } else if(mode === "multi"){
       window.location.href = "multiplayer.html";
     }

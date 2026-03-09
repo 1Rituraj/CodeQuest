@@ -72,13 +72,23 @@
       const tbody = document.querySelector("#leaderboardTable tbody");
       tbody.innerHTML = "";
 
-      const filtered = data
+      const currentUser = localStorage.getItem("playerName");
+
+      const filtered = data.leaderboard
         .filter(p => mode === "drag" ? p.dragMode : !p.dragMode)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 5); // top 5 only
+        .sort((a, b) => b.score - a.score);
+
+      let userRank = null;
 
       filtered.forEach((player, index) => {
         const row = document.createElement("tr");
+
+        if (player.name === currentUser) {
+          userRank = index + 1;
+          row.style.backgroundColor = "#d1fae5"; // highlight
+          row.style.fontWeight = "bold";
+        }
+
         row.innerHTML = `
           <td>${index + 1}</td>
           <td>${player.name}</td>
@@ -86,8 +96,19 @@
           <td>${player.difficulty || "-"}</td>
           <td>${player.puzzlesCompleted || 0}</td>
         `;
+
         tbody.appendChild(row);
       });
+
+      // Show rank info
+      if (userRank) {
+        const info = document.createElement("p");
+        info.innerHTML = `🎯 Your Rank: <strong>#${userRank}</strong> out of ${filtered.length} players`;
+        info.style.textAlign = "center";
+        info.style.marginTop = "15px";
+
+        document.querySelector(".container").appendChild(info);
+      }
     }
 
     function goHome() {

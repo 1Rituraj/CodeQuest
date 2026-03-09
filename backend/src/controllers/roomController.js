@@ -4,7 +4,7 @@ function generateRoomCode() {
   return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
-// 🎯 Create Room
+// Create Room
 export const createRoom = async (req, res) => {
   const { name } = req.body;
   const code = generateRoomCode();
@@ -22,7 +22,7 @@ export const createRoom = async (req, res) => {
   }
 };
 
-// 🎯 Join Room
+// Join Room
 export const joinRoom = async (req, res) => {
   const code = req.params.code;
   const { name } = req.body;
@@ -45,7 +45,7 @@ export const joinRoom = async (req, res) => {
 };
 
 
-// 🎯 Check room status
+// Check room status
 export const getRoomStatus = async (req, res) => {
     try {
       const room = await Room.findOne({ code: req.params.code });
@@ -60,7 +60,7 @@ export const getRoomStatus = async (req, res) => {
 
   };
   
-  // 🎯 Start game
+  // Start game
   export const startRoomGame = async (req, res) => {
     console.log("🎯 startRoomGame called for room", req.params.code);
 

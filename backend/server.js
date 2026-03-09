@@ -6,6 +6,8 @@ import { setupSocket } from './src/socketServer.js';
 
 dotenv.config();
 
+console.log("GEMINI API KEY:", process.env.GEMINI_API_KEY);
+
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/codequest";
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Session Summary - CodeQuest</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<script>
+if (!localStorage.getItem("playerId")) {
+  window.location.href = "login.html";
+}
+</script>
+
+<div class="container">
+
+<h1>🎉 Session Complete</h1>
+
+<p><strong>Correct Answers:</strong> <span id="correct"></span></p>
+<p><strong>Total Questions:</strong> <span id="total"></span></p>
+<p><strong>Topic:</strong> <span id="topic"></span></p>
+<p><strong>Accuracy:</strong> <span id="accuracy"></span>%</p>
+<p><strong>Performance:</strong> <span id="performance"></span></p>
+
+<hr>
+
+<h2>🤖 AI Recommendation</h2>
+<p id="recommendation">Analyzing your performance...</p>
+
+<hr>
+
+<button onclick="playAgain()">▶ Play Next Session</button>
+<button onclick="goLeaderboard()">🏆 Leaderboard</button>
+<button onclick="goAchievements()">🏅 Achievements</button>
+
+</div>
+
+<script>
+
+// Get session stats
+const stats = JSON.parse(localStorage.getItem("sessionStats")) || {
+  correct: 0,
+  total: 0
+};
+
+// Show stats
+document.getElementById("correct").innerText = stats.correct;
+document.getElementById("total").innerText = stats.total;
+
+// Show topic
+document.getElementById("topic").innerText =
+  localStorage.getItem("selectedTopic") || "General";
+
+// Calculate accuracy
+const accuracy = stats.total === 0
+  ? 0
+  : Math.round((stats.correct / stats.total) * 100);
+
+// Set accuracy text
+document.getElementById("accuracy").innerText = accuracy;
+
+// Determine color + recommendation
+let color = "red";
+let recommendation = "";
+let performance = "";
+
+if (accuracy >= 85) {
+  color = "green";
+  recommendation = "Excellent work! Try a harder difficulty next.";
+  performance = "Excellent ⭐";
+}
+else if (accuracy >= 65) {
+  color = "green";
+  recommendation = "Great job! Continue practicing this topic.";
+  performance = "Good 👍";
+}
+else if (accuracy >= 40) {
+  color = "orange";
+  recommendation = "You are improving. Practice more to master this topic.";
+  performance = "Needs Practice 📚";
+}
+else {
+  color = "red";
+  recommendation = "You should review this topic before advancing.";
+  performance = "Review Topic ⚠️";
+}
+
+// Apply styles and text
+document.getElementById("accuracy").style.color = color;
+document.getElementById("recommendation").innerText = recommendation;
+document.getElementById("performance").innerText = performance;
+
+
+// Navigation buttons
+
+function playAgain() {
+  window.location.href = "game.html";
+}
+
+function goLeaderboard() {
+  window.location.href = "leaderboard.html";
+}
+
+function goAchievements() {
+  window.location.href = "achievements.html";
+}
+
+</script>
+
+</body>
+</html>

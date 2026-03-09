@@ -21,7 +21,7 @@
   <script>
     function startNewGame() {
       localStorage.clear(); // Reset previous data
-      window.location.href = "register.html";
+      window.location.href = "login.html";
     }
 
     function continueGame() {
@@ -30,6 +30,7 @@
         window.location.href = "puzzle.html";
       } else {
         alert("No previous game found. Please register first.");
+        window.location.href = "login.html";
       }
     }
 

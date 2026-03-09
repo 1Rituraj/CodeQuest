@@ -15,8 +15,13 @@ export const saveScore = async (req, res) => {
 // Get top 5 scores
 export const getLeaderboard = async (req, res) => {
   try {
-    const topScores = await Score.find().sort({ score: -1 }).limit(5);
-    res.json(topScores);
+    const scores = await Score.find().sort({ score: -1 });
+
+    res.json({
+      totalPlayers: scores.length,
+      leaderboard: scores
+    });
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

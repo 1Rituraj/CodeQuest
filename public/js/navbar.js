@@ -72,8 +72,8 @@ fetch("navbar.html")
 function logout() {
   // Only remove login-related info
   localStorage.removeItem("playerId");
-  localStorage.removeItem("playerName");
-  localStorage.removeItem("avatarBase64");
+  // localStorage.removeItem("playerName");
+  // localStorage.removeItem("avatarBase64");
   // leave learnWatched and courseCompleted untouched
 
   window.location.href = "login.html";

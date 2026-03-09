@@ -3,8 +3,11 @@ let hintsUsed = 0;
 
 let countdown;
 let timeLeft = 30;
-let puzzles = [];
+
+let currentPuzzle = null;
 let currentIndex = 0;
+let puzzles = [];
+
 let score = parseInt(localStorage.getItem("score")) || 0;
 
 async function loadCoins() {
@@ -31,46 +34,60 @@ function updateShopButtons(coins) {
   if (timeBtn) timeBtn.disabled = coins < 3;
 }
 
+
+
 async function loadPuzzles() {
-  const userId = localStorage.getItem("playerId");
-  
+
   loadCoins();
-  const difficulty = localStorage.getItem("difficulty") || "beginner";
-  const preferredLanguage = localStorage.getItem("preferredLanguage") || "JavaScript";
 
-  const res = await fetch("data/puzzles.json");
-  const all = await res.json();
+  try {
 
-  puzzles = all.filter(p => p.difficulty === difficulty && p.language === preferredLanguage);
-  if (puzzles.length === 0) {
-    alert(`No puzzles found for ${preferredLanguage} - ${difficulty}. Showing default...`);
-    puzzles = all.filter(p => p.difficulty === "beginner");
+    const difficulty = localStorage.getItem("difficulty") || "beginner";
+    const preferredLanguage = localStorage.getItem("preferredLanguage") || "JavaScript";
+
+    let res = await fetch("/api/ai/generate-puzzle", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        difficulty,
+        language: preferredLanguage,
+        topic: localStorage.getItem("selectedTopic"),
+        userId: localStorage.getItem("playerId"),
+        count: 15   // 🔹 ask AI for 15 puzzles
+      })
+    });
+
+    if (!res.ok) throw new Error("AI generation failed");
+
+    const question = await res.json();
+
+    currentPuzzle = question;
+    currentIndex = 0;
+
+    showPuzzle();
+
+  } catch (err) {
+
+    console.log(err);
+    alert("Failed to generate puzzles");
+
   }
-  if (userId) {
-    const resUser = await fetch(`/api/users/${userId}`);
-    const userData = await resUser.json();
-
-    currentIndex = userData.currentPuzzleIndex ?? 0;
-  }
-  showPuzzle();
 }
 
-function showPuzzle() {
+ async function showPuzzle() {
+  window.answerSubmitted = false;
   hintsUsed = 0;
 
-  const puzzle = puzzles[currentIndex];
-  if (!puzzle) {
-    localStorage.setItem("puzzlesCompleted", currentIndex);
-    alert("✅ Puzzles completed! Moving to quiz...");
-    window.location.href = "quiz.html";
-    return;
-  }
+  const puzzle = currentPuzzle;
+
 
   document.getElementById("hint").style.display = "none";
   document.getElementById("feedback").innerText = "";
   document.getElementById("feedback").className = "";
 
-  document.getElementById("progress").innerText = `Puzzle ${currentIndex + 1} of ${puzzles.length}`;
+  document.getElementById("progress").innerText = `Puzzle ${currentIndex + 1}`;
   document.getElementById("question").innerText = puzzle.question;
 
   const form = document.getElementById("optionsForm");
@@ -100,11 +117,14 @@ function showPuzzle() {
     if (timeLeft <= 0) {
       clearInterval(countdown);
       showPuzzleFeedback("⏰ Time's up!", false);
+      submitTimeoutAnswer();
       setTimeout(nextPuzzle, 1000);
     }
   }, 1000);
 
-  questionStartTime = Date.now();
+  const nextBtn = document.querySelector("button[onclick='nextPuzzle()']");
+  nextBtn.innerText = "➡️ Next Puzzle";
+  nextBtn.disabled = true;
 
 }
 
@@ -117,7 +137,7 @@ function updateTimer(secondsLeft) {
 }
 
 function showHint() {
-  const puzzle = puzzles[currentIndex];
+  const puzzle = currentPuzzle;
 
   // if hints not defined
   if (!puzzle.hints) {
@@ -160,6 +180,11 @@ function showToast(message, color = "#333") {
 
 
 async function submitAnswer() {
+
+  //to prevent second click 
+
+  if (window.answerSubmitted) return;
+  window.answerSubmitted = true;
   clearInterval(countdown);
 
   const selected = document.querySelector("input[name='option']:checked");
@@ -168,7 +193,10 @@ async function submitAnswer() {
     return;
   }
 
-  const puzzle = puzzles[currentIndex];
+  
+  
+  const puzzle = currentPuzzle;
+  console.log("ANS:" , puzzle.answer);
   const timeTaken = Math.floor((Date.now() - questionStartTime) / 1000);
 
   try {
@@ -179,10 +207,12 @@ async function submitAnswer() {
       },
       body: JSON.stringify({
         userId: localStorage.getItem("playerId"),
-        questionId: puzzle.id || `puzzle_${currentIndex}`,
+        questionId: puzzle._id || `puzzle_${currentIndex}`,
         questionIndex: currentIndex,
         topic: puzzle.topic || "general",
+        language: localStorage.getItem("preferredLanguage"),
         difficulty: localStorage.getItem("difficulty") || "beginner",
+        question: puzzle.question, 
         selectedAnswer: selected.value,
         correctAnswer: puzzle.answer,
         timeTaken,
@@ -198,13 +228,36 @@ async function submitAnswer() {
       localStorage.setItem("score", score);
       showPuzzleFeedback(`✅ Correct! +${data.points} points +${data.coins} coins`, true);
       document.getElementById("coinDisplay").innerText = data.coins;
-      // 🔒 enable/disable shop buttons based on new coins
+      // enable/disable shop buttons based on new coins
       updateShopButtons(data.coins);
       showToast(`+${data.coins} coins earned!`, "#16a34a");
       if (data.points >= 15)
       showToast("⚡ Fast answer bonus!", "#2563eb");
     } else {
-      showPuzzleFeedback("❌ Incorrect!", false);
+      showPuzzleFeedback(
+        `❌ Incorrect! Correct answer: ${puzzle.answer}`,
+        false
+      );
+
+      if (data.explanation) {
+
+        const explanationBox = document.getElementById("feedback");
+
+        explanationBox.innerHTML += `
+        <div style="
+        margin-top:12px;
+        padding:12px;
+        background:#1e293b;
+        border-radius:8px;
+        color:white;
+        font-size:14px;
+        ">
+        💡 <b>Explanation</b><br>
+        ${data.explanation}
+        </div>
+        `;
+
+      }
     }
 
   } catch (err) {
@@ -212,7 +265,43 @@ async function submitAnswer() {
   }
 
   disableOptions();
-  setTimeout(nextPuzzle, 1000);
+  // setTimeout(nextPuzzle, 1000);
+  const nextBtn = document.querySelector("button[onclick='nextPuzzle()']");
+  nextBtn.innerText = "➡️ Next Question";
+  nextBtn.disabled = false;
+}
+
+async function submitTimeoutAnswer() {
+
+  const puzzle = currentPuzzle;
+
+  try {
+
+    await fetch("/api/game/puzzle/answer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        userId: localStorage.getItem("playerId"),
+        questionId: puzzle._id || `puzzle_${currentIndex}`,
+        questionIndex: currentIndex,
+        topic: puzzle.topic || "general",
+        language: localStorage.getItem("preferredLanguage"),
+        difficulty: localStorage.getItem("difficulty") || "beginner",
+        selectedAnswer: "",
+        correctAnswer: puzzle.answer,
+        timeTaken: 30,
+        hintsUsed
+      })
+    });
+
+  } catch (err) {
+
+    console.log("Timeout answer failed");
+
+  }
+
 }
 
 async function skipQuestion() {
@@ -234,9 +323,9 @@ async function skipQuestion() {
       return;
     }
 
-    // 🪙 update coin display
+    // update coin display
     document.getElementById("coinDisplay").innerText = data.coins;
-    // 🔒 enable/disable shop buttons based on new coins
+    // enable/disable shop buttons based on new coins
     updateShopButtons(data.coins);
     showToast("⏭️ Question skipped", "#f59e0b");
 
@@ -267,7 +356,7 @@ async function buyExtraTime() {
     }
 
     document.getElementById("coinDisplay").innerText = data.coins;
-    // 🔒 enable/disable shop buttons based on new coins
+    // enable/disable shop buttons based on new coins
     updateShopButtons(data.coins);
     timeLeft += data.extraTime;
     showToast("⏱️ +15 seconds added!", "#0ea5e9");
@@ -291,10 +380,64 @@ function showPuzzleFeedback(message, isCorrect) {
   fb.scrollIntoView({ behavior: "smooth" });
 }
 
-function nextPuzzle() {
+async function nextPuzzle() {
+
   clearInterval(countdown);
-  currentIndex++;
-  showPuzzle();
+
+  try {
+
+    const difficulty = localStorage.getItem("difficulty");
+    const language = localStorage.getItem("preferredLanguage");
+    const topic = localStorage.getItem("selectedTopic");
+    const userId = localStorage.getItem("playerId");
+
+    const res = await fetch("/api/ai/generate-puzzle", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        difficulty,
+        language,
+        topic,
+        userId
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.sessionComplete) {
+
+      localStorage.setItem("sessionStats", JSON.stringify(data.stats));
+
+      window.location.href = "session-summary.html";
+
+      return;
+    }
+
+    currentPuzzle = data;
+    currentIndex++;
+
+    showPuzzle();
+
+  } catch (err) {
+
+    alert("Failed to load next puzzle");
+
+  }
+
+}
+async function initGame() {
+  const replayId = localStorage.getItem("replayQuestionId");
+
+  if (replayId) {
+    const res = await fetch(`/api/questions/${replayId}`);
+    currentPuzzle = await res.json();
+    localStorage.removeItem("replayQuestionId");
+    showPuzzle();
+  } else {
+    loadPuzzles();
+  }
 }
 
-loadPuzzles();
+initGame();

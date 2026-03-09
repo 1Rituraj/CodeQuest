@@ -110,7 +110,12 @@
     <p class="info"><strong>Total Attempts:</strong> <span id="totalAttempts">-</span></p>
     <p class="info"><strong>🔥 Current Streak:</strong> <span id="streak">-</span> days</p>
 
+    <hr>
+    <h2>✅ Solved Questions</h2>
 
+    <button class="btn" onclick="goSolvedQuestions()">
+    📚 View Solved Questions
+    </button>
 
     <!-- 🏅 Progress Badge -->
     <p class="badge" id="badgeDisplay">Badge</p>
@@ -125,6 +130,8 @@
       <input type="number" id="editAge" placeholder="New age"  min="6" max="15" required />
       <button class="btn" type="submit">✅ Save Changes</button>
     </form>
+
+   
   </div>
 
   <script>
@@ -174,8 +181,8 @@
         }
     }
 
-// 👤 Load avatar on page load
-updateAvatar();
+    // 👤 Load avatar on page load
+    updateAvatar();
 
 
     // 📤 Upload new avatar
@@ -215,6 +222,9 @@ updateAvatar();
       toggleEditForm();
       alert("✅ Profile updated!");
     }
+    function goSolvedQuestions() {
+      window.location.href = "solved.html";
+    }
 
     // 🎮 Resume game
     function goToGame() {
@@ -250,23 +260,79 @@ updateAvatar();
     loadAnalytics();
 
     // 🔥 Load streak
-  async function loadStreak() {
-    const userId = localStorage.getItem("playerId");
-    if (!userId) return;
+    async function loadStreak() {
+      const userId = localStorage.getItem("playerId");
+      if (!userId) return;
 
-    try {
-      const res = await fetch(`/api/analytics/streak/${userId}`);
-      const data = await res.json();
+      try {
+        const res = await fetch(`/api/analytics/streak/${userId}`);
+        const data = await res.json();
 
-      document.getElementById("streak").innerText = data.streak;
+        document.getElementById("streak").innerText = data.streak;
 
-    } catch (err) {
-      console.log("Streak load failed");
+      } catch (err) {
+        console.log("Streak load failed");
+      }
     }
-  }
 
-  loadStreak();
+   loadStreak();
 
+  
+
+    async function loadSolvedQuestions() {
+      const userId = localStorage.getItem("playerId");
+      if (!userId) return;
+
+      try {
+        const res = await fetch(`/api/users/${userId}/solved`);
+        const solved = await res.json();
+
+        const list = document.getElementById("solvedList");
+        list.innerHTML = "";
+
+        if (!solved || solved.length === 0) {
+          list.innerHTML = "<li>No solved questions yet.</li>";
+          return;
+        }
+
+        solved.forEach(q => {
+
+          const li = document.createElement("li");
+          li.style.marginBottom = "15px";
+          li.style.padding = "10px";
+          li.style.background = "#f0f9ff";
+          li.style.borderRadius = "10px";
+          li.style.cursor = "pointer";
+
+          const solvedDate = new Date(q.createdAt)
+            .toLocaleDateString("en-IN", {
+              day: "numeric",
+              month: "long",
+              year: "numeric"
+            });
+
+          li.innerHTML = `
+            <strong>✔ ${q.question}</strong><br>
+            Topic: ${q.topic} | Difficulty: ${q.difficulty}<br>
+            Solved on: ${solvedDate}
+          `;
+
+          li.onclick = () => {
+            localStorage.setItem("replayQuestionId", q._id);
+            window.location.href = "game.html";
+          };
+
+          list.appendChild(li);
+
+        });
+
+      } catch (err) {
+        console.log("Solved questions load failed", err);
+      }
+    }
+
+    loadSolvedQuestions();
+    
 
   </script>
 </body>

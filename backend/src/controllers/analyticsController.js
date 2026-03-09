@@ -1,5 +1,10 @@
 import Attempt from "../models/Attempt.js";
 
+
+
+
+
+
 export const getPlayerAnalytics = async (req, res) => {
   try {
     const userId = req.params.userId;
@@ -40,24 +45,42 @@ export const getPlayerAnalytics = async (req, res) => {
     const accuracy = Math.round((correct / attempts.length) * 100);
     const avgTime = timedAttempts ? Math.round(totalTime / timedAttempts) : 0;
 
+    const topics = Object.keys(topicStats);
+
     let strongTopic = "N/A";
     let weakTopic = "N/A";
-    let maxAcc = -1;
-    let minAcc = 101;
 
-    for (const topic in topicStats) {
-      const t = topicStats[topic];
-      const acc = (t.correct / t.total) * 100;
+    if (topics.length === 1) {
 
-      if (acc > maxAcc) {
-        maxAcc = acc;
-        strongTopic = topic;
+      strongTopic = topics[0];
+      weakTopic = "Practice more topics";
+
+    } else {
+
+      let maxAcc = -1;
+      let minAcc = 101;
+
+      for (const topic in topicStats) {
+
+        const t = topicStats[topic];
+        const acc = (t.correct / t.total) * 100;
+
+        if (acc > maxAcc) {
+          maxAcc = acc;
+          strongTopic = topic;
+        }
+
+        if (acc < minAcc) {
+          minAcc = acc;
+          weakTopic = topic;
+        }
+
       }
 
-      if (acc < minAcc) {
-        minAcc = acc;
-        weakTopic = topic;
+      if (strongTopic === weakTopic) {
+        weakTopic = "Needs more practice";
       }
+
     }
 
     res.json({
