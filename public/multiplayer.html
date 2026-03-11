@@ -12,6 +12,16 @@
     if (!localStorage.getItem("playerId")) {
       window.location.href = "login.html";
     }
+    // ⭐ Prevent opening multiplayer page if already in a room
+    const roomCode = localStorage.getItem("roomCode");
+    const role = localStorage.getItem("playerRole");
+
+    if (roomCode && role) {
+      // optional alert
+      alert("You are already inside a multiplayer room.");
+
+      window.location.href = "waiting-room.html";
+    }
   </script>
   <script src="js/navbar.js" defer></script>
 
@@ -28,6 +38,7 @@
     <hr style="margin: 20px 0;">
 
     <h3>🔗 Join a Room</h3>
+    <p>Enter the room code shared by the host.</p>
     <input type="text" id="roomCode" placeholder="Enter room code" />
     <button onclick="joinRoom()">Join Room</button>
 
@@ -36,17 +47,59 @@
   </div>
 
   <script>
+
+    // Autofill player name if stored
+    const savedName = localStorage.getItem("playerName");
+    if (savedName) {
+      document.addEventListener("DOMContentLoaded", () => {
+        const input = document.getElementById("playerName");
+        if (input) input.value = savedName;
+      });
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const input = document.getElementById("roomCode");
+
+      input.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+          joinRoom();
+        }
+      });
+
+    });
     async function createRoom() {
-      const name = document.getElementById("playerName").value.trim();
+     const name = document.getElementById("playerName").value.trim();
+
       if (!name) return alert("Enter your name");
 
+      // 🔹 Get settings selected in game.html
+      const difficulty = localStorage.getItem("difficulty");
+      const language = localStorage.getItem("preferredLanguage");
+      const topic = localStorage.getItem("selectedTopic");
+      // 🔒 Only host (who came from game.html) can create room
+      if (!difficulty || !language || !topic) {
+        alert("Please select game settings first.");
+        window.location.href = "game.html";
+        return;
+      }
       const res = await fetch("/api/room/create", {
+
         method: "POST",
+
         headers: { "Content-Type": "application/json" },
+
         body: JSON.stringify({
+
           name,
-          playerId: localStorage.getItem("playerId") || ""
+          playerId: localStorage.getItem("playerId") || "",
+
+          // 🔹 Send game settings to backend
+          difficulty,
+          language,
+          topic
+
         })
+
       });
 
       const data = await res.json();

@@ -1,25 +1,17 @@
-import Score from "../models/Score.js";
-
-// Save player score
-export const saveScore = async (req, res) => {
-  try {
-    const { name, score, difficulty, puzzlesCompleted } = req.body;
-    const newScore = new Score({ name, score, difficulty, puzzlesCompleted });
-    await newScore.save();
-    res.status(201).json({ message: "Score saved!" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
+import User from "../models/User.js";
 
 // Get top 5 scores
 export const getLeaderboard = async (req, res) => {
   try {
-    const scores = await Score.find().sort({ score: -1 });
+
+    const players = await User.find()
+      .sort({ score: -1 })
+      .limit(20)
+      .select("name score puzzlesCompleted level");
 
     res.json({
-      totalPlayers: scores.length,
-      leaderboard: scores
+      totalPlayers: players.length,
+      leaderboard: players
     });
 
   } catch (err) {

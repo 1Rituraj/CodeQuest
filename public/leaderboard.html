@@ -25,6 +25,9 @@
       padding: 10px;
       border: 1px solid #ccc;
     }
+    td:first-child {
+      font-size: 20px;
+    }
   </style>
 </head>
 <body>
@@ -38,22 +41,13 @@
   <div class="container">
     <h1>🏆 CodeQuest Leaderboard</h1>
 
-    <!-- 🔘 Mode filter -->
-    <div class="toggle-container">
-      <label for="modeSelect">Select Mode:</label>
-      <select id="modeSelect" onchange="loadLeaderboard()">
-        <option value="normal">🧩 Normal Mode</option>
-        <option value="drag">🧠 Drag Mode</option>
-      </select>
-    </div>
-
     <table id="leaderboardTable">
       <thead>
         <tr>
           <th>Rank</th>
           <th>Name</th>
           <th>Score</th>
-          <th>Difficulty</th>
+          <th>Level</th>
           <th>Puzzles Completed</th>
         </tr>
       </thead>
@@ -68,32 +62,35 @@
       const res = await fetch("/api/leaderboard");
       const data = await res.json();
 
-      const mode = document.getElementById("modeSelect").value;
       const tbody = document.querySelector("#leaderboardTable tbody");
       tbody.innerHTML = "";
 
       const currentUser = localStorage.getItem("playerName");
-
-      const filtered = data.leaderboard
-        .filter(p => mode === "drag" ? p.dragMode : !p.dragMode)
-        .sort((a, b) => b.score - a.score);
+      const filtered = data.leaderboard.sort((a, b) => b.score - a.score);
 
       let userRank = null;
 
       filtered.forEach((player, index) => {
+
+        let rankDisplay = index + 1;
+        if (index === 0) rankDisplay = "🥇";
+        else if (index === 1) rankDisplay = "🥈";
+        else if (index === 2) rankDisplay = "🥉";
+
         const row = document.createElement("tr");
 
         if (player.name === currentUser) {
           userRank = index + 1;
           row.style.backgroundColor = "#d1fae5"; // highlight
           row.style.fontWeight = "bold";
+          row.style.color = "black";
         }
 
         row.innerHTML = `
-          <td>${index + 1}</td>
+          <td>${rankDisplay}</td>
           <td>${player.name}</td>
           <td>${player.score}</td>
-          <td>${player.difficulty || "-"}</td>
+          <td>${player.level || "-"}</td>
           <td>${player.puzzlesCompleted || 0}</td>
         `;
 
@@ -106,6 +103,7 @@
         info.innerHTML = `🎯 Your Rank: <strong>#${userRank}</strong> out of ${filtered.length} players`;
         info.style.textAlign = "center";
         info.style.marginTop = "15px";
+        info.style.color = "black";
 
         document.querySelector(".container").appendChild(info);
       }

@@ -20,6 +20,11 @@
     <div>
       <p>👑 Host: <span id="hostName">Loading...</span></p>
       <p>👤 Guest: <span id="guestName">Waiting...</span></p>
+      <hr style="margin:10px 0">
+
+      <p>⚙ Difficulty: <span id="difficulty">-</span></p>
+      <p>💻 Language: <span id="language">-</span></p>
+      <p>📚 Topic: <span id="topic">-</span></p>
     </div>
 
     <button id="startBtn" style="display: none;" onclick="startGame()">Start Game</button>
@@ -51,7 +56,15 @@
 
             document.getElementById("hostName").innerText = hostName;
             document.getElementById("guestName").innerText = guestName;
+            /* ⭐ SHOW HOST SETTINGS */
+            document.getElementById("difficulty").innerText =
+              data.settings?.difficulty || "-";
 
+            document.getElementById("language").innerText =
+              data.settings?.language || "-";
+
+            document.getElementById("topic").innerText =
+              data.settings?.topic || "-";
             if (role === "host" && data.guest) {
             document.getElementById("startBtn").style.display = "inline-block";
             }
@@ -61,26 +74,33 @@
               window.location.href = "multiplayer-puzzle.html";
             }
         } catch (err) {
-            console.error("Fetch error:", err);
-            document.getElementById("status").innerText = "❌ Failed to fetch room status.";
+          console.log("Room polling error:", err);
         }
-        }
+        
+      }
 
 
-            async function startGame() {
-            const res = await fetch(`/api/room/start/${roomCode}`, {
-                method: "POST"
-            });
-            if (res.ok) {
-                window.location.href = "multiplayer-puzzle.html";
-            } else {
-                document.getElementById("status").innerText = "❌ Could not start the game.";
-            }
+    async function startGame() {
+
+      document.getElementById("status").innerText = "⏳ Generating AI questions...";
+
+      const res = await fetch(`/api/room/start/${roomCode}`, {
+        method: "POST"
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        document.getElementById("status").innerText = "❌ " + (data.message || "Failed to start game");
+        return;
+      }
+
+      document.getElementById("status").innerText = "✅ Game starting...";
     }
 
     // Refresh room status every 2 seconds
     fetchRoomStatus(); // initial
-    setInterval(fetchRoomStatus, 2000);
+    setInterval(fetchRoomStatus, 3000);
   </script>
 </body>
 </html>

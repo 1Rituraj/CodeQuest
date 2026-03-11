@@ -155,7 +155,10 @@ export const generatePuzzle = async (req, res) => {
     // console.log(data , "quest from gemini");
     
 
-    if (data.error) throw new Error("AI quota or API error");
+    if (data.error){
+      console.log("Gemini API response error:", data.error);
+      throw new Error("AI quota or API error");
+    } 
 
     const text =
       data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
@@ -201,10 +204,11 @@ export const generatePuzzle = async (req, res) => {
       answered: 0
     };
 
-    // Send first question
+    // Send first question to frontend
     return res.json(activePools[sessionKey].shift());
 
   } catch (err) {
+    console.log("AI ERROR:", err);
     console.log("⚠ AI failed, using fallback pool");
 
     activePools[sessionKey] =

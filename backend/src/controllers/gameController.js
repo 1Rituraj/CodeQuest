@@ -138,13 +138,28 @@ export const submitPuzzleAnswer = async (req, res) => {
     // Save current progress
     const updatedUser = await User.findByIdAndUpdate(userId,
       {
-        $inc: {coins: coinsEarned},
+        $inc: {
+          coins: coinsEarned,
+          score: points,
+          puzzlesCompleted: isCorrect ? 1 : 0
+        },
         currentPuzzleIndex: req.body.questionIndex + 1,
         currentDifficulty: difficulty
       },
       {new: true}
     );
+    // Update level based on score
+    if (updatedUser.score > 500) {
+      updatedUser.level = "Advanced";
+    } 
+    else if (updatedUser.score > 200) {
+      updatedUser.level = "Intermediate";
+    } 
+    else {
+      updatedUser.level = "Beginner";
+    }
 
+    await updatedUser.save();
     res.json({
       correct: isCorrect,
       points,
@@ -193,7 +208,12 @@ export const submitDragAnswer = async (req, res) => {
       coinsEarned = 3; // reward for drag correct
 
       await User.findByIdAndUpdate(userId, {
-        $inc: { coins: coinsEarned }
+        $inc: { 
+          coins: coinsEarned,
+          score: points,
+          puzzlesCompleted: isCorrect ? 1 : 0
+
+        }
       });
     }
 
